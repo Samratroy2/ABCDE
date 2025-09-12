@@ -89,5 +89,17 @@
     "location": "Kolkata",
     "contact": "9083640748",
     "image": "/uploads/image1.png"
+  },
+  {
+    "name": "MUNNA ROY",
+    "email": "roys18746@gmail.com",
+    "age": 40,
+    "location": "Kolkata",
+    "contact": "9083640748",
+    "medicalHistory": [
+      "rxdctfbhjkml"
+    ],
+    "medicines": [],
+    "availability": []
   }
 ]
