@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import './PatientsDetails.css';
+import './Patients.css';
 
 export default function PatientsDetails() {
   const { id } = useParams(); // userId from URL

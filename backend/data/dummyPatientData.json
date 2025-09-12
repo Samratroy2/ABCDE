@@ -89,5 +89,18 @@
     "location": "Chennai",
     "contact": "9871122334",
     "image": "/uploads/1757664045678-neha.jpg"
+  },
+  {
+    "name": "Samrat Roy",
+    "email": "roys18746@gmail.com",
+    "age": 40,
+    "location": "Kolkata",
+    "contact": "908364074",
+    "medicalHistory": [
+      "Cancer"
+    ],
+    "medicines": [],
+    "availability": [],
+    "image": "/uploads/1757676605519-pic.jpg"
   }
 ]
