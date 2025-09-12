@@ -79,23 +79,5 @@
     "pharmacyName": "LifeCare Pharmacy",
     "licenseNumber": "1789550",
     "address": "12 T Nagar, Chennai, Tamil Nadu, pin - 600017"
-  },
-  {
-    "userId": "pharmacist902316739",
-    "name": "MUNNA ROY",
-    "email": "roys18746@gmail.com",
-    "location": "Kolkata",
-    "pharmacyName": "Pharmeasy",
-    "licenseNumber": "1789546",
-    "address": "NOHARI, NOHARI, GOALTORE, PASCHIM MEDINIPUR,721121",
-    "medicalHistory": [],
-    "medicines": [
-      "Vitamin B12",
-      "Vitamin C",
-      "Cough Syrup"
-    ],
-    "availability": ["Mon-Fri 9am-5pm",
-      "Sat 10am-2pm"],
-    "image": "/uploads/image 4.jpg"
   }
 ]

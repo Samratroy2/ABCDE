@@ -1,4 +1,3 @@
-// frontend/src/pages/AdminPanel.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -6,10 +5,9 @@ export default function AdminPanel() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-
   const token = localStorage.getItem('token');
 
-  // Fetch all users
+  // Fetch users
   useEffect(() => {
     const fetchUsers = async () => {
       if (!token) {
@@ -17,7 +15,6 @@ export default function AdminPanel() {
         setLoading(false);
         return;
       }
-
       try {
         const res = await axios.get('http://localhost:5000/api/admin/users', {
           headers: { Authorization: `Bearer ${token}` },
@@ -38,14 +35,15 @@ export default function AdminPanel() {
   }, [token]);
 
   // Delete user
-  const deleteUser = async (id) => {
+  const deleteUser = async (userId) => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
 
     try {
-      await axios.delete(`http://localhost:5000/api/admin/users/${id}`, {
+      await axios.delete(`http://localhost:5000/api/admin/users/${userId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setUsers(users.filter(u => u._id !== id));
+      // Remove from frontend state
+      setUsers(users.filter(u => u.userId !== userId));
     } catch (err) {
       alert(err.response?.data?.message || 'Failed to delete user');
     }
@@ -55,12 +53,17 @@ export default function AdminPanel() {
   if (error) return <p style={{ color: 'red' }}>{error}</p>;
 
   return (
-    <div>
+    <div style={{ padding: '20px' }}>
       <h1>Admin Panel - All Users</h1>
       {users.length === 0 ? (
         <p>No users found.</p>
       ) : (
-        <table border="1" cellPadding="5" cellSpacing="0">
+        <table
+          border="1"
+          cellPadding="5"
+          cellSpacing="0"
+          style={{ width: '100%', textAlign: 'center' }}
+        >
           <thead>
             <tr>
               <th>Name</th>
@@ -72,7 +75,7 @@ export default function AdminPanel() {
           </thead>
           <tbody>
             {users.map(u => (
-              <tr key={u._id}>
+              <tr key={u.userId}>
                 <td>{u.name}</td>
                 <td>{u.email}</td>
                 <td>{u.role}</td>
@@ -83,12 +86,15 @@ export default function AdminPanel() {
                       alt="Profile"
                       width="50"
                     />
-                  ) : (
-                    'N/A'
-                  )}
+                  ) : 'N/A'}
                 </td>
                 <td>
-                  <button onClick={() => deleteUser(u._id)}>Delete</button>
+                  <button
+                    onClick={() => deleteUser(u.userId)}
+                    style={{ backgroundColor: 'red', color: 'white', cursor: 'pointer' }}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}

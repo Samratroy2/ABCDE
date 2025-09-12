@@ -1,20 +1,5 @@
 [
   {
-    "userId": "patient849590996",
-    "name": "SAYAN DUTTA",
-    "email": "samratroy721121@gmail.com",
-    "role": "patient",
-    "medicalHistory": [
-      "mwklnjcf2kqjnfkjwqnkjcfbwkjbcfkhw"
-    ],
-    "medicines": [],
-    "availability": [],
-    "age": 40,
-    "location": "Kolkata",
-    "contact": "9083640748",
-    "image": "/uploads/image1.png"
-  },
-  {
     "userId": "patient849590997",
     "name": "Rahul Sharma",
     "email": "rahul.sharma@example.com",
