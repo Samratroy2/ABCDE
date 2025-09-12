@@ -17,7 +17,7 @@
     "contact": "9083640748",
     "specialization": "General Physician",
     "experience": 100,
-    "image": "/uploads/1757663572051-images.jpg"
+    "image": "/uploads/image2.png"
   },
   {
     "userId": "doctor981130695",
@@ -36,7 +36,7 @@
     "contact": "9123456780",
     "specialization": "Pediatrician",
     "experience": 15,
-    "image": "/uploads/1757663573052-anita.jpg"
+    "image": "/uploads/image.png"
   },
   {
     "userId": "doctor981130696",
@@ -56,7 +56,7 @@
     "contact": "9876543210",
     "specialization": "Cardiologist",
     "experience": 20,
-    "image": "/uploads/1757663574053-rakesh.jpg"
+    "image": "/uploads/image2.png"
   },
   {
     "userId": "doctor981130697",
@@ -76,7 +76,7 @@
     "contact": "9988776655",
     "specialization": "Dermatologist",
     "experience": 12,
-    "image": "/uploads/1757663575054-meera.jpg"
+    "image": "/uploads/image.png"
   },
   {
     "userId": "doctor981130698",
@@ -96,7 +96,7 @@
     "contact": "9012345678",
     "specialization": "Orthopedic",
     "experience": 18,
-    "image": "/uploads/1757663576055-vikram.jpg"
+    "image": "/uploads/image2.png"
   },
   {
     "userId": "doctor981130699",
@@ -116,26 +116,6 @@
     "contact": "9876123450",
     "specialization": "Neurologist",
     "experience": 10,
-    "image": "/uploads/1757663577056-sonal.jpg"
-  },
-  {
-    "userId": "doctor817795862",
-    "name": "Samrat Roy",
-    "email": "samratroy721121@gmail.com",
-    "role": "doctor",
-    "image": "/uploads/1757677854231-20230716_233817.jpg",
-    "medicalHistory": [],
-    "medicines": [],
-    "availability": [
-      "Monday",
-      "Wednesday",
-      "Friday"
-    ],
-    "patientsServed": 66526,
-    "rating": 9,
-    "location": "Kolkata",
-    "contact": "9083640748",
-    "specialization": "General Physician",
-    "experience": 123
+    "image": "/uploads/image.png"
   }
 ]

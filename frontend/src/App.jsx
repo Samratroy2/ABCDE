@@ -25,8 +25,10 @@ export default function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
+        {/* Default route -> Login page */}
+        <Route path="/" element={<Login />} />
+
         {/* Home & Doctors */}
-        <Route path="/" element={<Doctors />} />
         <Route path="/doctors" element={<Doctors />} />
         <Route path="/doctors/:id" element={<DoctorDetail />} />
 

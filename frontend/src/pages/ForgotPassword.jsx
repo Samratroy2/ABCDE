@@ -1,54 +1,52 @@
-// frontend/src/pages/ForgotPassword.jsx
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import './ForgotPassword.css';
+import { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
+import logo from "../assets/image.png"; // <-- import logo
+import "./ForgotPassword.css"; // import CSS
 
 export default function ForgotPassword() {
-  const [email, setEmail] = useState('');
-  const [msg, setMsg] = useState('');
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
   const { sendForgotPassword } = useAuth();
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setMsg('');
+    setMessage("");
+    setError("");
 
     try {
-      const message = await sendForgotPassword(email);
-      setMsg(message);
-
-      // Redirect to ResetPassword page after 2 seconds
-      setTimeout(() => {
-        navigate('/reset-password', { state: { email } });
-      }, 2000);
+      const res = await sendForgotPassword(email);
+      if (res.success) {
+        setMessage(res.message || "OTP sent to your email.");
+        navigate(`/reset-password?email=${encodeURIComponent(email)}`);
+      } else {
+        setError(res.message || "Failed to send OTP.");
+      }
     } catch (err) {
-      setMsg(err.response?.data?.message || 'Failed to send OTP');
-    } finally {
-      setLoading(false);
+      setError(err.message || "Failed to send OTP.");
     }
   };
 
   return (
-    <div className="forgot-page">
-      <div className="forgot-container">
-        <h1>Forgot Password</h1>
-        <p>Enter your email to receive an OTP for password reset.</p>
-        <form onSubmit={handleSubmit} className="forgot-form">
+    <div className="forgot-password-container">
+      <div className="forgot-password-card">
+        {/* Logo at the top */}
+        <img src={logo} alt="Hospital Logo" className="forgot-password-logo" />
+        <h2 className="forgot-password-title">Forgot Password</h2>
+        <form onSubmit={handleSubmit} className="forgot-password-form space-y-4">
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Enter your email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          <button type="submit" disabled={loading}>
-            {loading ? 'Sending...' : 'Send OTP'}
-          </button>
+          <button type="submit">Send OTP</button>
         </form>
-        {msg && <p style={{ color: msg.includes('sent') ? 'green' : 'red' }}>{msg}</p>}
+        {message && <p className="forgot-password-message">{message}</p>}
+        {error && <p className="forgot-password-error">{error}</p>}
       </div>
     </div>
   );

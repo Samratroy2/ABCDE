@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import logo from "../assets/image.png"; // <-- added logo import
 import "./Signup.css";
 
 export default function Signup() {
@@ -19,13 +20,9 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      // Automatically generate unique userId
       const userId = form.role + Date.now() + Math.floor(Math.random() * 1000);
-
-      // Send form data + userId to signup
       const userData = await signup({ ...form, userId });
 
-      // Redirect based on role
       if (userData.role === "doctor") navigate("/doctors");
       else if (userData.role === "patient") navigate("/patients");
       else if (userData.role === "pharmacist") navigate("/pharmacists");
@@ -40,6 +37,8 @@ export default function Signup() {
   return (
     <div className="signup-page">
       <div className="signup-container">
+        {/* Logo at the top */}
+        <img src={logo} alt="Hospital Logo" className="signup-logo" />
         <h1 className="signup-title">Signup</h1>
         <form onSubmit={handleSubmit} className="signup-form">
           <input

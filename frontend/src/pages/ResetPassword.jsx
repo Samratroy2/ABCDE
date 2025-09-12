@@ -1,79 +1,74 @@
-// frontend/src/pages/ResetPassword.jsx
-import { useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import './ResetPassword.css';
+import { useState, useEffect } from "react";
+import { useAuth } from "../contexts/AuthContext";
+import { useSearchParams, useNavigate } from "react-router-dom";
+import logo from "../assets/image.png"; // <-- import logo
+import "./ResetPassword.css"; // import CSS
 
 export default function ResetPassword() {
-  const location = useLocation();
-  const navigate = useNavigate();
   const { resetPassword } = useAuth();
-  const preEmail = location.state?.email || '';
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
-  const [form, setForm] = useState({
-    email: preEmail,
-    otp: '',
-    newPassword: '',
-  });
-  const [msg, setMsg] = useState('');
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  useEffect(() => {
+    const emailParam = searchParams.get("email");
+    if (emailParam) setEmail(emailParam);
+  }, [searchParams]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setMsg('');
+    setMessage("");
+    setError("");
 
     try {
-      // OTP is sent as a string
-      const message = await resetPassword(form.email, form.otp, form.newPassword);
-      setMsg(message);
-
-      // Redirect to login after 2 seconds
-      setTimeout(() => navigate('/login'), 2000);
+      const res = await resetPassword(email, otp, newPassword);
+      if (res.success) {
+        setMessage(res.message || "Password reset successful! Please log in.");
+        setTimeout(() => navigate("/login"), 2000);
+      } else {
+        setError(res.message || "Failed to reset password.");
+      }
     } catch (err) {
-      setMsg(err.response?.data?.message || 'Failed to reset password');
-    } finally {
-      setLoading(false);
+      setError(err.message || "Failed to reset password.");
     }
   };
 
   return (
-    <div className="reset-page">
-      <div className="reset-container">
-        <h1>Reset Password</h1>
-        <p>Enter the OTP sent to your email and set a new password.</p>
-        <form onSubmit={handleSubmit} className="reset-form">
+    <div className="reset-password-container">
+      <div className="reset-password-card">
+        {/* Logo at the top */}
+        <img src={logo} alt="Hospital Logo" className="reset-password-logo" />
+        <h2 className="reset-password-title">Reset Password</h2>
+        <form onSubmit={handleSubmit} className="reset-password-form space-y-4">
           <input
             type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
+            placeholder="Enter your email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             required
-            readOnly
           />
           <input
             type="text"
-            name="otp"
             placeholder="Enter OTP"
-            value={form.otp}
-            onChange={handleChange}
+            value={otp}
+            onChange={(e) => setOtp(e.target.value)}
             required
           />
           <input
             type="password"
-            name="newPassword"
             placeholder="New Password"
-            value={form.newPassword}
-            onChange={handleChange}
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
             required
           />
-          <button type="submit" disabled={loading}>
-            {loading ? 'Resetting...' : 'Reset Password'}
-          </button>
+          <button type="submit">Reset Password</button>
         </form>
-        {msg && <p style={{ color: msg.includes('successful') ? 'green' : 'red' }}>{msg}</p>}
+        {message && <p className="reset-password-message">{message}</p>}
+        {error && <p className="reset-password-error">{error}</p>}
       </div>
     </div>
   );

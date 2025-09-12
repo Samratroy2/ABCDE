@@ -1,23 +1,28 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import './Navbar.css';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Pages where Navbar should NOT be shown
   const hiddenPaths = ['/login', '/signup', '/forgot-password', '/reset-password'];
-  if (hiddenPaths.includes(location.pathname)) return null;
+
+  // Hide Navbar if current path matches or starts with a hidden path
+  const isHidden = hiddenPaths.some(path => location.pathname.startsWith(path));
+  if (isHidden) return null;
+
+  // Logout and redirect to login
+  const handleLogout = () => {
+    logout();           // Call logout from AuthContext
+    navigate('/login'); // Redirect to login page
+  };
 
   return (
     <nav className="navbar">
-      {/* Logo / Brand */}
-      <Link to="/" className="navbar-brand">
-        Telemedicine
-      </Link>
-
-      {/* Navigation Links */}
+      <span className="navbar-brand">Telemedicine</span>
       <div className="navbar-links">
         <Link to="/doctors">Doctors</Link>
         <Link to="/patients">Patients</Link>
@@ -26,16 +31,10 @@ export default function Navbar() {
         {user ? (
           <>
             <Link to="/profile">{user.name}</Link>
-            {/* Admin Panel link only for super admin */}
             {user.email === 'trysamrat1@gmail.com' && <Link to="/admin">Admin Panel</Link>}
-            <button onClick={logout}>Logout</button>
+            <button onClick={handleLogout} className="logout-btn">Logout</button>
           </>
-        ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/signup">Signup</Link>
-          </>
-        )}
+        ) : null}
       </div>
     </nav>
   );

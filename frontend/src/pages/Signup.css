@@ -214,3 +214,12 @@
   color: #28a745; /* green for success, can be changed to red for errors */
   text-align: center;
 }
+
+/* Logo styling */
+.signup-logo {
+  display: block;
+  margin: 0 auto 1.5rem;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
