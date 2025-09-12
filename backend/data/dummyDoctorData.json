@@ -6,7 +6,11 @@
     "role": "doctor",
     "medicalHistory": [],
     "medicines": [],
-    "availability": ["Monday", "Wednesday", "Friday"],
+    "availability": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ],
     "patientsServed": 400,
     "rating": 9.9,
     "location": "Kolkata",
@@ -22,7 +26,10 @@
     "role": "doctor",
     "medicalHistory": [],
     "medicines": [],
-    "availability": ["Tuesday", "Thursday"],
+    "availability": [
+      "Tuesday",
+      "Thursday"
+    ],
     "patientsServed": 250,
     "rating": 9.2,
     "location": "Mumbai",
@@ -38,7 +45,11 @@
     "role": "doctor",
     "medicalHistory": [],
     "medicines": [],
-    "availability": ["Monday", "Wednesday", "Friday"],
+    "availability": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ],
     "patientsServed": 320,
     "rating": 8.8,
     "location": "Delhi",
@@ -54,7 +65,11 @@
     "role": "doctor",
     "medicalHistory": [],
     "medicines": [],
-    "availability": ["Monday", "Tuesday", "Thursday"],
+    "availability": [
+      "Monday",
+      "Tuesday",
+      "Thursday"
+    ],
     "patientsServed": 180,
     "rating": 9.5,
     "location": "Bangalore",
@@ -70,9 +85,13 @@
     "role": "doctor",
     "medicalHistory": [],
     "medicines": [],
-    "availability": ["Wednesday", "Friday", "Saturday"],
+    "availability": [
+      "Wednesday",
+      "Friday",
+      "Saturday"
+    ],
     "patientsServed": 220,
-    "rating": 9.0,
+    "rating": 9,
     "location": "Chennai",
     "contact": "9012345678",
     "specialization": "Orthopedic",
@@ -86,7 +105,11 @@
     "role": "doctor",
     "medicalHistory": [],
     "medicines": [],
-    "availability": ["Tuesday", "Thursday", "Saturday"],
+    "availability": [
+      "Tuesday",
+      "Thursday",
+      "Saturday"
+    ],
     "patientsServed": 150,
     "rating": 8.5,
     "location": "Hyderabad",
@@ -94,5 +117,25 @@
     "specialization": "Neurologist",
     "experience": 10,
     "image": "/uploads/1757663577056-sonal.jpg"
+  },
+  {
+    "userId": "doctor817795862",
+    "name": "Samrat Roy",
+    "email": "samratroy721121@gmail.com",
+    "role": "doctor",
+    "image": "/uploads/1757677854231-20230716_233817.jpg",
+    "medicalHistory": [],
+    "medicines": [],
+    "availability": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ],
+    "patientsServed": 66526,
+    "rating": 9,
+    "location": "Kolkata",
+    "contact": "9083640748",
+    "specialization": "General Physician",
+    "experience": 123
   }
 ]

@@ -1,13 +1,17 @@
 // frontend/src/components/PatientCard.jsx
-
 import { Link } from 'react-router-dom';
 import './PatientCard.css';
 
 export default function PatientCard({ patient }) {
+  // Full URL for backend images
+  const imageUrl = patient.image
+    ? `http://localhost:5000${encodeURI(patient.image)}`
+    : '/default-patient.png';
+
   return (
     <div className="patient-card">
       <img
-        src={patient.image ? patient.image : '/default-patient.png'}
+        src={imageUrl}
         alt={patient.name}
         className="patient-card-image"
       />

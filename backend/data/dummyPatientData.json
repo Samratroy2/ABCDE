@@ -1,20 +1,5 @@
 [
   {
-    "userId": "patient849590995",
-    "name": "Samrat Roy",
-    "email": "trysamrat1@gmail.com",
-    "role": "patient",
-    "medicalHistory": [
-      "Cancer"
-    ],
-    "medicines": [],
-    "availability": [],
-    "age": 40,
-    "location": "Kolkata",
-    "contact": "9083640748",
-    "image": "/uploads/1757668392493-smiling-medical-doctor-woman-stethoscope-isolated-over-white-background-35552912.webp"
-  },
-  {
     "userId": "patient849590996",
     "name": "Anita Singh",
     "email": "anita.singh@example.com",
@@ -90,17 +75,20 @@
     "contact": "9871122334",
     "image": "/uploads/1757664045678-neha.jpg"
   },
+  
   {
+    "userId": "patient294087446",
     "name": "Samrat Roy",
     "email": "roys18746@gmail.com",
-    "age": 40,
-    "location": "Kolkata",
-    "contact": "908364074",
+    "role": "patient",
     "medicalHistory": [
-      "Cancer"
+      "Diabetes"
     ],
     "medicines": [],
     "availability": [],
-    "image": "/uploads/1757676605519-pic.jpg"
+    "age": 753,
+    "location": "Kolkata",
+    "contact": "9083640748",
+    "image": "/uploads/1757677362887-Samrat production.png"
   }
 ]

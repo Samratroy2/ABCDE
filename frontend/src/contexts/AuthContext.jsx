@@ -1,3 +1,4 @@
+// frontend/src/contexts/AuthContext.js
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
 
@@ -37,10 +38,16 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Signup
-  const signup = async (name, email, password, role) => {
+  // Signup (accepts object including userId)
+  const signup = async ({ name, email, password, role, userId }) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/signup", { name, email, password, role });
+      const res = await axios.post("http://localhost:5000/api/auth/signup", {
+        name,
+        email,
+        password,
+        role,
+        userId,
+      });
       const { user: userData, token } = res.data;
       localStorage.setItem("user", JSON.stringify(userData));
       localStorage.setItem("token", token);

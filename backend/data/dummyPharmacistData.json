@@ -99,5 +99,21 @@
     "image": "/uploads/1757662020745-smiling-medical-doctor-woman-stethoscope-isolated-over-white-background-35552912.webp",
     "licenseNumber": "1789546",
     "address": "NOHARI, NOHARI, GOALTORE, PASCHIM MEDINIPUR,721121"
+  },
+  {
+    "userId": "pharmacist902316739",
+    "name": "SAYAN DUTTA",
+    "email": "trysamrat1@gmail.com",
+    "role": "pharmacist",
+    "image": "/uploads/1757678000555-WhatsApp Image 2025-08-25 at 00.00.21_4e31955d.jpg",
+    "medicalHistory": [],
+    "medicines": [
+      "Cough Syrup",
+      "Vitamin C",
+      "Paracetamol"
+    ],
+    "availability": [],
+    "location": "Kolkata",
+    "pharmacyName": "Pharmeasy"
   }
 ]

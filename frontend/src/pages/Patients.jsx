@@ -36,22 +36,29 @@ export default function Patients() {
     <div className="patients-page">
       <h1>All Patients</h1>
       <div className="patients-grid">
-        {patients.map((patient, index) => (
-          <Link
-            to={`/patients/${patient.userId}`}
-            key={patient.userId || index}
-            className="patient-card"
-          >
-            <img
-              src={patient.image ? patient.image : '/default-patient.png'}
-              alt={patient.name}
-              className="patient-card-photo"
-            />
-            <h3>{patient.name || 'N/A'}</h3>
-            <p><strong>Age:</strong> {patient.age || 'N/A'}</p>
-            <p><strong>Location:</strong> {patient.location || 'N/A'}</p>
-          </Link>
-        ))}
+        {patients.map((patient, index) => {
+          // Full URL for backend images
+          const imageUrl = patient.image
+            ? `http://localhost:5000${encodeURI(patient.image)}`
+            : '/default-patient.png';
+
+          return (
+            <Link
+              to={`/patients/${patient.userId}`}
+              key={patient.userId || index}
+              className="patient-card"
+            >
+              <img
+                src={imageUrl}
+                alt={patient.name || 'Patient'}
+                className="patient-card-photo"
+              />
+              <h3>{patient.name || 'N/A'}</h3>
+              <p><strong>Age:</strong> {patient.age || 'N/A'}</p>
+              <p><strong>Location:</strong> {patient.location || 'N/A'}</p>
+            </Link>
+          );
+        })}
       </div>
     </div>
   );

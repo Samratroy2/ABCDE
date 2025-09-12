@@ -19,7 +19,11 @@ export default function Signup() {
     setLoading(true);
 
     try {
-      const userData = await signup(form.name, form.email, form.password, form.role);
+      // Automatically generate unique userId
+      const userId = form.role + Date.now() + Math.floor(Math.random() * 1000);
+
+      // Send form data + userId to signup
+      const userData = await signup({ ...form, userId });
 
       // Redirect based on role
       if (userData.role === "doctor") navigate("/doctors");
