@@ -1,0 +1,76 @@
+.medicine-search-container {
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centers children horizontally */
+}
+
+.search-box-wrapper {
+  position: relative;
+  max-width: 400px;
+  width: 100%;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.search-input {
+  padding: 8px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px 0 0 6px;
+  outline: none;
+}
+
+.search-btn {
+  padding: 8px 16px;
+  background: #0077cc;
+  color: white;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #005fa3;
+}
+
+.suggestions-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fff;
+  width: 100%;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.suggestions-list li {
+  padding: 10px 14px;
+  font-size: 14px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+}
+
+.suggestions-list li:hover {
+  background: #f5f5f5;
+}
+
+.pharmacist-results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}

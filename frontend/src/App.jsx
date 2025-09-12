@@ -19,6 +19,7 @@ import Login from './pages/Login';
 import ForgotPassword from './pages/ForgotPassword';
 import ResetPassword from './pages/ResetPassword';
 import AdminPanel from './pages/AdminPanel';
+import MedicineSearch from "./pages/MedicineSearch";
 
 export default function App() {
   return (
@@ -48,7 +49,8 @@ export default function App() {
         {/* Pharmacists */}
         <Route path="/pharmacists" element={<Pharmacists />} />
         <Route path="/pharmacists/:userId" element={<PharmacistsDetails />} />
-
+        <Route path="/search-medicine" element={<MedicineSearch />} />
+        
         {/* Profile (Protected) */}
         <Route
           path="/profile"

@@ -11,6 +11,8 @@ const readPharmacists = () =>
 const writePharmacists = (data) =>
   fs.writeFileSync(dummyPharmacistFile, JSON.stringify(data, null, 2));
 
+// ------------------ CONTROLLERS ------------------
+
 // Get all pharmacists
 exports.getAllPharmacists = (req, res) => {
   try {
@@ -37,6 +39,25 @@ exports.getMyProfile = (req, res) => {
     return res.status(404).json({ message: "Pharmacist not found" });
   }
   res.json(pharmacist);
+};
+
+// Search pharmacists by medicine name
+exports.searchMedicine = (req, res) => {
+  try {
+    const { name } = req.query;
+    if (!name) {
+      return res.status(400).json({ message: "Medicine name is required" });
+    }
+
+    const pharmacists = readPharmacists().filter((p) =>
+      p.medicines?.some((m) => m.toLowerCase().includes(name.toLowerCase()))
+    );
+
+    res.json(pharmacists);
+  } catch (err) {
+    console.error("Error searching medicine:", err);
+    res.status(500).json({ message: "Server error" });
+  }
 };
 
 // Update logged-in pharmacist profile

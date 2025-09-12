@@ -1,71 +1,108 @@
 /* Navbar.css */
+
 .navbar {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: flex-start;
-  padding: 1rem 2rem;
-  background-color: #2563eb; /* Tailwind blue-600 */
-  color: white;
+  padding: 12px 24px;
+  background-color: #0077cc;
+  color: #fff;
+  flex-wrap: wrap;
   position: sticky;
   top: 0;
-  z-index: 50;
+  z-index: 100;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-.navbar a {
-  text-decoration: none;
-  color: white;
-  font-weight: 500;
-  margin-right: 1.5rem;
-  transition: color 0.2s ease-in-out;
-}
-
-.navbar a:hover {
-  text-decoration: underline;
-  color: #dbeafe; /* lighter blue */
-}
-
-.navbar button {
-  background-color: #ef4444; /* Tailwind red-500 */
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 0.375rem;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.navbar button:hover {
-  background-color: #dc2626; /* darker red */
-}
-
-/* Left-aligned brand */
 .navbar-brand {
+  font-size: 1.6rem;
   font-weight: bold;
-  font-size: 1.25rem;
-  margin-right: 2rem;
+  cursor: pointer;
 }
 
-/* Links container */
 .navbar-links {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Common style for all links */
+.navbar-links a,
+.navbar-links button {
+  text-decoration: none;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+}
+
+/* Hover effect */
+.navbar-links a:hover,
+.navbar-links button:hover {
+  background-color: #005fa3;
+  color: #fff;
+}
+
+/* Logout button style */
+.logout-btn {
+  background-color: #e74c3c;
+}
+
+.logout-btn:hover {
+  background-color: #c0392b;
+  color: #fff;
+}
+
+/* Search medicine link styled like button */
+.navbar-links a[href="/search-medicine"] {
+  background-color: #ff9800;
+  color: #fff;
+}
+
+.navbar-links a[href="/search-medicine"]:hover {
+  background-color: #e68900;
+  color: #fff;
 }
 
 /* Responsive: stack links on small screens */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .navbar {
     flex-direction: column;
     align-items: flex-start;
   }
 
   .navbar-links {
-    flex-direction: column;
     width: 100%;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
   }
 
-  .navbar a,
-  .navbar button {
-    margin-bottom: 0.5rem;
+  .navbar-links a,
+  .navbar-links button {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Mobile: smaller padding */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px 16px;
+  }
+
+  .navbar-brand {
+    font-size: 1.4rem;
+  }
+
+  .navbar-links a,
+  .navbar-links button {
+    padding: 6px 12px;
+    font-size: 0.95rem;
   }
 }

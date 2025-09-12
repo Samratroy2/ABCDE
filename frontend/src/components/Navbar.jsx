@@ -1,38 +1,48 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useAuth } from '../contexts/AuthContext';
-import './Navbar.css';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import "./Navbar.css";
 
 export default function Navbar() {
   const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Pages where Navbar should NOT be shown
-  const hiddenPaths = ['/login', '/signup', '/forgot-password', '/reset-password'];
+  // Hide navbar on these routes
+  const hiddenPaths = ["/login", "/signup", "/forgot-password", "/reset-password"];
+  if (hiddenPaths.some((path) => location.pathname.startsWith(path))) return null;
 
-  // Hide Navbar if current path matches or starts with a hidden path
-  const isHidden = hiddenPaths.some(path => location.pathname.startsWith(path));
-  if (isHidden) return null;
-
-  // Logout and redirect to login
   const handleLogout = () => {
-    logout();           // Call logout from AuthContext
-    navigate('/login'); // Redirect to login page
+    logout();
+    navigate("/login");
   };
 
   return (
     <nav className="navbar">
-      <span className="navbar-brand">Telemedicine</span>
+      <span
+        className="navbar-brand"
+        style={{ cursor: "pointer" }}
+      >
+        Telemedicine
+      </span>
+
       <div className="navbar-links">
+        {/* ✅ Search link styled like other buttons */}
+        
+
         <Link to="/doctors">Doctors</Link>
         <Link to="/patients">Patients</Link>
         <Link to="/pharmacists">Pharmacists</Link>
+        <Link to="/search-medicine">🔍 Search Medicine</Link>
 
         {user ? (
           <>
             <Link to="/profile">{user.name}</Link>
-            {user.email === 'trysamrat1@gmail.com' && <Link to="/admin">Admin Panel</Link>}
-            <button onClick={handleLogout} className="logout-btn">Logout</button>
+            {user.email === "trysamrat1@gmail.com" && (
+              <Link to="/admin">Admin Panel</Link>
+            )}
+            <button onClick={handleLogout} className="logout-btn">
+              Logout
+            </button>
           </>
         ) : null}
       </div>
