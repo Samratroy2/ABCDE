@@ -1,27 +1,19 @@
 [
   {
-    "userId": "pharmacist902316739",
-    "name": "SAYAN DUTTA",
-    "email": "trysamrat1@gmail.com",
-    "role": "pharmacist",
-    "image": "/uploads/image 4.jpg",
-    "medicalHistory": [],
-    "medicines": ["Cough Syrup", "Vitamin C", "Paracetamol"],
-    "availability": ["Mon-Fri 9am-6pm"],
-    "location": "Kolkata",
-    "pharmacyName": "Pharmeasy",
-    "licenseNumber": "1789546",
-    "address": "Vill+post - nohari, dist - paschim Medinipur, state - west bengal, p.s - Goaltore, pin - 721121"
-  },
-  {
     "userId": "pharmacist902316740",
     "name": "PRIYA SEN",
     "email": "priya.sen@example.com",
     "role": "pharmacist",
     "image": "/uploads/image 4.jpg",
     "medicalHistory": [],
-    "medicines": ["Ibuprofen", "Antacid", "Vitamin D"],
-    "availability": ["Mon-Sat 10am-7pm"],
+    "medicines": [
+      "Ibuprofen",
+      "Antacid",
+      "Vitamin D"
+    ],
+    "availability": [
+      "Mon-Sat 10am-7pm"
+    ],
     "location": "Delhi",
     "pharmacyName": "HealthPlus",
     "licenseNumber": "1789547",
@@ -34,8 +26,14 @@
     "role": "pharmacist",
     "image": "/uploads/image 4.jpg",
     "medicalHistory": [],
-    "medicines": ["Paracetamol", "Amoxicillin", "Cough Syrup"],
-    "availability": ["Mon-Fri 8am-5pm"],
+    "medicines": [
+      "Paracetamol",
+      "Amoxicillin",
+      "Cough Syrup"
+    ],
+    "availability": [
+      "Mon-Fri 8am-5pm"
+    ],
     "location": "Mumbai",
     "pharmacyName": "CareWell Pharmacy",
     "licenseNumber": "1789548",
@@ -48,8 +46,14 @@
     "role": "pharmacist",
     "image": "/uploads/image 4.jpg",
     "medicalHistory": [],
-    "medicines": ["Vitamin B12", "Insulin", "Cough Syrup"],
-    "availability": ["Tue-Sun 9am-6pm"],
+    "medicines": [
+      "Vitamin B12",
+      "Insulin",
+      "Cough Syrup"
+    ],
+    "availability": [
+      "Tue-Sun 9am-6pm"
+    ],
     "location": "Bangalore",
     "pharmacyName": "MediTrust",
     "licenseNumber": "1789549",
@@ -62,11 +66,36 @@
     "role": "pharmacist",
     "image": "/uploads/image 4.jpg",
     "medicalHistory": [],
-    "medicines": ["Paracetamol", "Vitamin C", "Multivitamins"],
-    "availability": ["Mon-Fri 9am-5pm", "Sat 10am-2pm"],
+    "medicines": [
+      "Paracetamol",
+      "Vitamin C",
+      "Multivitamins"
+    ],
+    "availability": [
+      "Mon-Fri 9am-5pm",
+      "Sat 10am-2pm"
+    ],
     "location": "Chennai",
     "pharmacyName": "LifeCare Pharmacy",
     "licenseNumber": "1789550",
     "address": "12 T Nagar, Chennai, Tamil Nadu, pin - 600017"
+  },
+  {
+    "userId": "pharmacist902316739",
+    "name": "MUNNA ROY",
+    "email": "roys18746@gmail.com",
+    "location": "Kolkata",
+    "pharmacyName": "Pharmeasy",
+    "licenseNumber": "1789546",
+    "address": "NOHARI, NOHARI, GOALTORE, PASCHIM MEDINIPUR,721121",
+    "medicalHistory": [],
+    "medicines": [
+      "Vitamin B12",
+      "Vitamin C",
+      "Cough Syrup"
+    ],
+    "availability": ["Mon-Fri 9am-5pm",
+      "Sat 10am-2pm"],
+    "image": "/uploads/image 4.jpg"
   }
 ]

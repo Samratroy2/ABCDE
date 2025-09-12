@@ -4,6 +4,8 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
+const fs = require("fs");
+const path = require("path");
 require("dotenv").config();
 
 // Temporary OTP store (use DB/Redis in production)
@@ -19,7 +21,7 @@ const generateToken = (user) => {
 // ================== SIGNUP ==================
 const signupUser = async (req, res) => {
   try {
-    const { name, email, password, role, userId } = req.body;
+    const { name, email, password, role } = req.body;
 
     if (!name || !email || !password) {
       return res.status(400).json({ success: false, message: "All fields are required" });
@@ -30,16 +32,86 @@ const signupUser = async (req, res) => {
       return res.status(400).json({ success: false, message: "Email already in use" });
     }
 
+    // Auto-generate fixed userId based on role
+    let userId = "";
+    if (role === "doctor") userId = "doctor981130694";
+    else if (role === "patient") userId = "patient849590996";
+    else if (role === "pharmacist") userId = "pharmacist902316739";
+    else userId = role + Date.now() + Math.floor(Math.random() * 1000); // fallback
+
     const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create MongoDB User
     const newUser = new User({
       name,
       email,
       password: hashedPassword,
       role: role || "patient",
-      userId, // optional custom userId
+      userId,
     });
 
     await newUser.save();
+
+    // ---------------- Add user to corresponding JSON ----------------
+    let filePath;
+    let newEntry;
+
+    if (role === "doctor") {
+      filePath = path.join(__dirname, "../data/dummyDoctorData.json");
+      const doctors = JSON.parse(fs.readFileSync(filePath, "utf-8") || "[]");
+      newEntry = {
+        userId,
+        name,
+        email,
+        location: "",
+        contact: "",
+        specialization: "",
+        experience: 0,
+        patientsServed: 0,
+        rating: 0,
+        medicalHistory: [],
+        medicines: [],
+        availability: [],
+        image: "",
+      };
+      doctors.push(newEntry);
+      fs.writeFileSync(filePath, JSON.stringify(doctors, null, 2));
+    } else if (role === "patient") {
+      filePath = path.join(__dirname, "../data/dummyPatientData.json");
+      const patients = JSON.parse(fs.readFileSync(filePath, "utf-8") || "[]");
+      newEntry = {
+        userId,
+        name,
+        email,
+        age: null,
+        location: "",
+        contact: "",
+        medicalHistory: [],
+        medicines: [],
+        availability: [],
+      };
+      patients.push(newEntry);
+      fs.writeFileSync(filePath, JSON.stringify(patients, null, 2));
+    } else if (role === "pharmacist") {
+      filePath = path.join(__dirname, "../data/dummyPharmacistData.json");
+      const pharmacists = JSON.parse(fs.readFileSync(filePath, "utf-8") || "[]");
+      newEntry = {
+        userId,
+        name,
+        email,
+        location: "",
+        contact: "",
+        pharmacyName: "",
+        licenseNumber: "",
+        address: "",
+        medicalHistory: [],
+        medicines: [],
+        availability: [],
+      };
+      pharmacists.push(newEntry);
+      fs.writeFileSync(filePath, JSON.stringify(pharmacists, null, 2));
+    }
+    // ----------------------------------------------------------------
 
     const token = generateToken(newUser);
 
@@ -67,7 +139,8 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ success: false, message: "Invalid credentials" });
+    if (!user)
+      return res.status(400).json({ success: false, message: "Invalid credentials" });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
@@ -104,12 +177,11 @@ const forgotPassword = async (req, res) => {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     otpStore[email] = { otp, expiresAt: Date.now() + 10 * 60 * 1000 }; // 10 min
 
-    // Setup mail transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
         user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS, // ⚠️ Use App Password for Gmail
+        pass: process.env.EMAIL_PASS,
       },
     });
 
@@ -124,12 +196,8 @@ const forgotPassword = async (req, res) => {
       return res.json({ success: true, message: "OTP sent to email" });
     } catch (mailError) {
       console.error("Email error:", mailError.message);
-      // fallback: return OTP in console
       console.log(`OTP for ${email}: ${otp}`);
-      return res.json({
-        success: true,
-        message: "OTP generated (check console in dev mode).",
-      });
+      return res.json({ success: true, message: "OTP generated (check console in dev mode)." });
     }
   } catch (err) {
     console.error("Forgot password error:", err.message);

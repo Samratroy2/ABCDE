@@ -1,25 +1,5 @@
 [
   {
-    "userId": "doctor981130694",
-    "name": "Samrat Roy",
-    "email": "roys18746@gmail.com",
-    "role": "doctor",
-    "medicalHistory": [],
-    "medicines": [],
-    "availability": [
-      "Monday",
-      "Wednesday",
-      "Friday"
-    ],
-    "patientsServed": 400,
-    "rating": 9.9,
-    "location": "Kolkata",
-    "contact": "9083640748",
-    "specialization": "General Physician",
-    "experience": 100,
-    "image": "/uploads/image2.png"
-  },
-  {
     "userId": "doctor981130695",
     "name": "Anita Sen",
     "email": "anita.sen@example.com",
@@ -117,5 +97,24 @@
     "specialization": "Neurologist",
     "experience": 10,
     "image": "/uploads/image.png"
+  },
+  {
+    "userId": "doctor981130694",
+    "name": "Samrat Roy",
+    "email": "trysamrat1@gmail.com",
+    "location": "Kolkata",
+    "contact": "9083640748",
+    "specialization": "General Physician",
+    "experience": 14,
+    "patientsServed": 879,
+    "rating": 9.9,
+    "medicalHistory": [],
+    "medicines": [],
+    "availability": [
+      "Monday",
+      "Wednesday",
+      "Friday"
+    ],
+    "image": "/uploads/image2.png"
   }
 ]
