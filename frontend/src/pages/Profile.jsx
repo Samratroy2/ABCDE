@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';  
 import axios from 'axios';
 import './Profile.css';
 
@@ -100,6 +100,7 @@ export default function Profile() {
               <p><strong>Address:</strong> {profile.address || 'N/A'}</p>
               <p><strong>Location:</strong> {profile.location || 'N/A'}</p>
               <p><strong>Available Medicines:</strong> {profile.medicines?.join(', ') || 'N/A'}</p>
+              <p><strong>Availability:</strong> {profile.availability?.join(', ') || 'N/A'}</p>
             </>
           )}
 
@@ -115,7 +116,17 @@ export default function Profile() {
             <>
               <input name="specialization" value={form.specialization || ''} onChange={handleChange} placeholder="Specialization" />
               <input name="experience" value={form.experience || ''} onChange={handleChange} type="number" placeholder="Experience" />
-              <input name="availability" value={form.availability?.join(', ') || ''} onChange={e => setForm({ ...form, availability: e.target.value.split(',').map(s => s.trim()) })} placeholder="Availability (comma separated)" />
+              <input
+                name="availability"
+                value={form.availability?.join(', ') || ''}
+                onChange={e =>
+                  setForm({
+                    ...form,
+                    availability: e.target.value.split(',').map(s => s.trim()).filter(s => s)
+                  })
+                }
+                placeholder="Availability (comma separated)"
+              />
               <input name="location" value={form.location || ''} onChange={handleChange} placeholder="Location" />
               <input name="contact" value={form.contact || ''} onChange={handleChange} placeholder="Contact" />
               <input name="patientsServed" value={form.patientsServed || ''} onChange={handleChange} type="number" placeholder="Patients Served" />
@@ -126,7 +137,17 @@ export default function Profile() {
           {profile.role === 'patient' && (
             <>
               <input name="age" value={form.age || ''} onChange={handleChange} type="number" placeholder="Age" />
-              <textarea name="medicalHistory" value={form.medicalHistory?.join(', ') || ''} onChange={e => setForm({ ...form, medicalHistory: e.target.value.split(',').map(s => s.trim()) })} placeholder="Medical History (comma separated)" />
+              <textarea
+                name="medicalHistory"
+                value={form.medicalHistory?.join(', ') || ''}
+                onChange={e =>
+                  setForm({
+                    ...form,
+                    medicalHistory: e.target.value.split(',').map(s => s.trim()).filter(s => s)
+                  })
+                }
+                placeholder="Medical History (comma separated)"
+              />
               <input name="location" value={form.location || ''} onChange={handleChange} placeholder="Location" />
               <input name="contact" value={form.contact || ''} onChange={handleChange} placeholder="Contact" />
             </>
@@ -138,7 +159,28 @@ export default function Profile() {
               <input name="licenseNumber" value={form.licenseNumber || ''} onChange={handleChange} placeholder="License Number" />
               <input name="address" value={form.address || ''} onChange={handleChange} placeholder="Address" />
               <input name="location" value={form.location || ''} onChange={handleChange} placeholder="Location" />
-              <textarea name="medicines" value={form.medicines?.join(', ') || ''} onChange={e => setForm({ ...form, medicines: e.target.value.split(',').map(s => s.trim()) })} placeholder="Available Medicines (comma separated)" />
+              <textarea
+                name="medicines"
+                value={form.medicines?.join(', ') || ''}
+                onChange={e =>
+                  setForm({
+                    ...form,
+                    medicines: e.target.value.split(',').map(s => s.trim()).filter(s => s)
+                  })
+                }
+                placeholder="Available Medicines (comma separated)"
+              />
+              <input
+                name="availability"
+                value={form.availability?.join(', ') || ''}
+                onChange={e =>
+                  setForm({
+                    ...form,
+                    availability: e.target.value.split(',').map(s => s.trim()).filter(s => s)
+                  })
+                }
+                placeholder="Availability (comma separated)"
+              />
             </>
           )}
 

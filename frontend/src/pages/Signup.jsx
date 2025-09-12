@@ -107,6 +107,15 @@ export default function Signup() {
         </form>
 
         {msg && <p className="signup-msg">{msg}</p>}
+
+        {/* Back to Login button */}
+        <button
+          type="button"
+          className="back-login-btn"
+          onClick={() => navigate("/login")}
+        >
+          Back to Login
+        </button>
       </div>
     </div>
   );

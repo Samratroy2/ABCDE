@@ -31,23 +31,36 @@ export default function ForgotPassword() {
 
   return (
     <div className="forgot-password-container">
-      <div className="forgot-password-card">
-        {/* Logo at the top */}
-        <img src={logo} alt="Hospital Logo" className="forgot-password-logo" />
-        <h2 className="forgot-password-title">Forgot Password</h2>
-        <form onSubmit={handleSubmit} className="forgot-password-form space-y-4">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <button type="submit">Send OTP</button>
-        </form>
-        {message && <p className="forgot-password-message">{message}</p>}
-        {error && <p className="forgot-password-error">{error}</p>}
-      </div>
+  <div className="forgot-password-card">
+    <img src={logo} alt="Hospital Logo" className="forgot-password-logo" />
+    <h2 className="forgot-password-title">Forgot Password</h2>
+
+    <form onSubmit={handleSubmit} className="forgot-password-form space-y-4">
+      <input
+        type="email"
+        placeholder="Enter your email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
+      <button type="submit">Send OTP</button>
+    </form>
+
+    {/* Centered container for messages and Back to Login button */}
+    <div className="center-content">
+      {message && <p className="forgot-password-message">{message}</p>}
+      {error && <p className="forgot-password-error">{error}</p>}
+
+      <button
+        type="button"
+        className="back-login-btn"
+        onClick={() => navigate("/login")}
+      >
+        Back to Login
+      </button>
     </div>
+  </div>
+</div>
+
   );
 }
