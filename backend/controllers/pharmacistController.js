@@ -1,5 +1,3 @@
-//backend\controllers\pharmacistController.js
-
 const fs = require("fs");
 const path = require("path");
 
@@ -13,7 +11,7 @@ const readPharmacists = () =>
 const writePharmacists = (data) =>
   fs.writeFileSync(dummyPharmacistFile, JSON.stringify(data, null, 2));
 
-// 📌 Get all pharmacists
+// Get all pharmacists
 exports.getAllPharmacists = (req, res) => {
   try {
     const pharmacists = readPharmacists();
@@ -23,33 +21,33 @@ exports.getAllPharmacists = (req, res) => {
   }
 };
 
-// 📌 Get pharmacist by ID
-exports.getPharmacistById = (req, res) => {
-  const pharmacist = readPharmacists().find((p) => p._id === req.params.id);
+// Get pharmacist by userId
+exports.getPharmacistByUserId = (req, res) => {
+  const pharmacist = readPharmacists().find((p) => p.userId === req.params.userId);
   if (!pharmacist) {
     return res.status(404).json({ message: "Pharmacist not found" });
   }
   res.json(pharmacist);
 };
 
-// 📌 Get logged-in pharmacist profile
+// Get logged-in pharmacist profile
 exports.getMyProfile = (req, res) => {
-  const pharmacist = readPharmacists().find((p) => p._id === req.user._id);
+  const pharmacist = readPharmacists().find((p) => p.userId === req.user.userId);
   if (!pharmacist) {
     return res.status(404).json({ message: "Pharmacist not found" });
   }
   res.json(pharmacist);
 };
 
-// 📌 Update logged-in pharmacist profile
+// Update logged-in pharmacist profile
 exports.updateMyProfile = (req, res) => {
   const pharmacists = readPharmacists();
-  const index = pharmacists.findIndex((p) => p._id === req.user._id);
+  const index = pharmacists.findIndex((p) => p.userId === req.user.userId);
   if (index === -1) {
     return res.status(404).json({ message: "Pharmacist not found" });
   }
 
-  const { name, pharmacyName, licenseNumber, address, availableMedicines } = req.body;
+  const { name, pharmacyName, licenseNumber, address, medicines } = req.body;
 
   pharmacists[index] = {
     ...pharmacists[index],
@@ -57,11 +55,11 @@ exports.updateMyProfile = (req, res) => {
     pharmacyName: pharmacyName || pharmacists[index].pharmacyName,
     licenseNumber: licenseNumber || pharmacists[index].licenseNumber,
     address: address || pharmacists[index].address,
-    availableMedicines: availableMedicines
-      ? Array.isArray(availableMedicines)
-        ? availableMedicines
-        : availableMedicines.split(",").map((m) => m.trim())
-      : pharmacists[index].availableMedicines,
+    medicines: medicines
+      ? Array.isArray(medicines)
+        ? medicines
+        : medicines.split(",").map((m) => m.trim())
+      : pharmacists[index].medicines,
   };
 
   writePharmacists(pharmacists);

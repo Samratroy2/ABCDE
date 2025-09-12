@@ -45,7 +45,7 @@ export default function App() {
 
         {/* Pharmacists */}
         <Route path="/pharmacists" element={<Pharmacists />} />
-        <Route path="/pharmacists/:id" element={<PharmacistsDetails />} />
+        <Route path="/pharmacists/:userId" element={<PharmacistsDetails />} />
 
         {/* Profile (Protected) */}
         <Route

@@ -1,6 +1,5 @@
 // frontend/src/pages/Pharmacists.jsx
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import PharmacistCard from '../components/PharmacistCard';
 import './Pharmacists.css';
@@ -9,7 +8,6 @@ export default function Pharmacists() {
   const [pharmacists, setPharmacists] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchPharmacists = async () => {
@@ -18,7 +16,7 @@ export default function Pharmacists() {
         setPharmacists(res.data);
       } catch (err) {
         console.error('Error fetching pharmacists:', err);
-        setError('Failed to load pharmacists');
+        setError('Failed to load pharmacists.');
       } finally {
         setLoading(false);
       }
@@ -26,26 +24,14 @@ export default function Pharmacists() {
     fetchPharmacists();
   }, []);
 
-  const handleViewDetails = (id) => {
-    navigate(`/pharmacists/${id}`);
-  };
-
   if (loading) return <p>Loading pharmacists...</p>;
-  if (error) return <p style={{ color: 'red' }}>{error}</p>;
-  if (!pharmacists.length) return <p>No pharmacists found.</p>;
+  if (error) return <p>{error}</p>;
 
   return (
-    <div className="pharmacists-page">
-      <h1>All Pharmacists</h1>
-      <div className="pharmacists-grid">
-        {pharmacists.map((pharma) => (
-          <PharmacistCard
-            key={pharma._id || pharma.email} // unique key fallback
-            pharmacist={pharma}
-            onClick={() => handleViewDetails(pharma._id)}
-          />
-        ))}
-      </div>
+    <div className="pharmacists-container">
+      {pharmacists.map((pharmacist) => (
+        <PharmacistCard key={pharmacist.userId} pharmacist={pharmacist} />
+      ))}
     </div>
   );
 }

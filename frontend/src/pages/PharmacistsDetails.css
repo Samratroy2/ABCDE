@@ -1,0 +1,31 @@
+.pharmacist-details {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.pharmacist-details-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 20px;
+  border: 3px solid #007bff;
+}
+
+.pharmacist-details h2 {
+  margin-bottom: 15px;
+  font-size: 28px;
+  color: #222;
+}
+
+.pharmacist-details p {
+  font-size: 16px;
+  color: #555;
+  margin: 8px 0;
+}

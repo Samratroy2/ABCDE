@@ -1,119 +1,72 @@
 [
   {
-    "_id": "pharma1",
-    "name": "John Doe",
-    "email": "johndoe@pharmacy.com",
-    "role": "pharmacist",
-    "pharmacyName": "HealthPlus Pharmacy",
-    "licenseNumber": "LIC123456",
-    "address": "123 Main Street, Cityville",
-    "location": "Cityville",
-    "medicines": [
-      "Paracetamol",
-      "Ibuprofen",
-      "Amoxicillin"
-    ],
-    "image": "/uploads/pharma1.jpg"
-  },
-  {
-    "_id": "pharma2",
-    "name": "Jane Smith",
-    "email": "janesmith@pharmacy.com",
-    "role": "pharmacist",
-    "pharmacyName": "WellCare Pharmacy",
-    "licenseNumber": "LIC654321",
-    "address": "456 Elm Street, Townsville",
-    "location": "Townsville",
-    "medicines": [
-      "Cough Syrup",
-      "Vitamin C",
-      "Metformin"
-    ],
-    "image": "/uploads/pharma2.jpg"
-  },
-  {
-    "_id": "pharma3",
-    "name": "Robert Johnson",
-    "email": "robertj@pharmacy.com",
-    "role": "pharmacist",
-    "pharmacyName": "GoodHealth Pharmacy",
-    "licenseNumber": "LIC987654",
-    "address": "789 Oak Avenue, Villageton",
-    "location": "Villageton",
-    "medicines": [
-      "Aspirin",
-      "Omeprazole",
-      "Cetirizine"
-    ],
-    "image": "/uploads/pharma3.jpg"
-  },
-  {
-    "_id": "pharma4",
-    "name": "Emily Davis",
-    "email": "emilyd@pharmacy.com",
-    "role": "pharmacist",
-    "pharmacyName": "CareWell Pharmacy",
-    "licenseNumber": "LIC112233",
-    "address": "321 Pine Street, Metropolis",
-    "location": "Metropolis",
-    "medicines": [
-      "Insulin",
-      "Losartan",
-      "Prednisone"
-    ],
-    "image": "/uploads/pharma4.jpg"
-  },
-  {
-    "_id": "pharma5",
-    "name": "Michael Brown",
-    "email": "michaelb@pharmacy.com",
-    "role": "pharmacist",
-    "pharmacyName": "MediCare Pharmacy",
-    "licenseNumber": "LIC445566",
-    "address": "654 Cedar Road, Springfield",
-    "location": "Springfield",
-    "medicines": [
-      "Amoxicillin",
-      "Loratadine",
-      "Simvastatin"
-    ],
-    "image": "/uploads/pharma5.jpg"
-  },
-  {
-    "userId": "pharmacist182197336",
-    "name": "Samrat Roy",
-    "email": "samratroy721121@gmail.com",
-    "role": "pharmacist",
-    "medicalHistory": [],
-    "medicines": [
-      "Cough Syrup",
-      "Vitamin C",
-      "Paracetamol"
-    ],
-    "availability": [],
-    "_id": "68c3c7fe68c87d0252cc23ca",
-    "password": "$2b$10$wSXj.Wq7mxjoWZU/Hylpqe5tpVFGRC1YLOMZaMFQT8nZWOclap8Z6",
-    "__v": 1,
-    "location": "Kolkata",
-    "pharmacyName": "Pharmeasy",
-    "image": "/uploads/1757662020745-smiling-medical-doctor-woman-stethoscope-isolated-over-white-background-35552912.webp",
-    "licenseNumber": "1789546",
-    "address": "NOHARI, NOHARI, GOALTORE, PASCHIM MEDINIPUR,721121"
-  },
-  {
     "userId": "pharmacist902316739",
     "name": "SAYAN DUTTA",
     "email": "trysamrat1@gmail.com",
     "role": "pharmacist",
     "image": "/uploads/1757678000555-WhatsApp Image 2025-08-25 at 00.00.21_4e31955d.jpg",
     "medicalHistory": [],
-    "medicines": [
-      "Cough Syrup",
-      "Vitamin C",
-      "Paracetamol"
-    ],
-    "availability": [],
+    "medicines": ["Cough Syrup", "Vitamin C", "Paracetamol"],
+    "availability": ["Mon-Fri 9am-6pm"],
     "location": "Kolkata",
-    "pharmacyName": "Pharmeasy"
+    "pharmacyName": "Pharmeasy",
+    "licenseNumber": "1789546",
+    "address": "Vill+post - nohari, dist - paschim Medinipur, state - west bengal, p.s - Goaltore, pin - 721121"
+  },
+  {
+    "userId": "pharmacist902316740",
+    "name": "PRIYA SEN",
+    "email": "priya.sen@example.com",
+    "role": "pharmacist",
+    "image": "/uploads/priya_sen.jpg",
+    "medicalHistory": [],
+    "medicines": ["Ibuprofen", "Antacid", "Vitamin D"],
+    "availability": ["Mon-Sat 10am-7pm"],
+    "location": "Delhi",
+    "pharmacyName": "HealthPlus",
+    "licenseNumber": "1789547",
+    "address": "123 MG Road, Delhi, India, pin - 110001"
+  },
+  {
+    "userId": "pharmacist902316741",
+    "name": "RAHUL KUMAR",
+    "email": "rahul.kumar@example.com",
+    "role": "pharmacist",
+    "image": "/uploads/rahul_kumar.jpg",
+    "medicalHistory": [],
+    "medicines": ["Paracetamol", "Amoxicillin", "Cough Syrup"],
+    "availability": ["Mon-Fri 8am-5pm"],
+    "location": "Mumbai",
+    "pharmacyName": "CareWell Pharmacy",
+    "licenseNumber": "1789548",
+    "address": "456 Marine Drive, Mumbai, Maharashtra, pin - 400001"
+  },
+  {
+    "userId": "pharmacist902316742",
+    "name": "ANITA SHARMA",
+    "email": "anita.sharma@example.com",
+    "role": "pharmacist",
+    "image": "/uploads/anita_sharma.jpg",
+    "medicalHistory": [],
+    "medicines": ["Vitamin B12", "Insulin", "Cough Syrup"],
+    "availability": ["Tue-Sun 9am-6pm"],
+    "location": "Bangalore",
+    "pharmacyName": "MediTrust",
+    "licenseNumber": "1789549",
+    "address": "789 MG Road, Bangalore, Karnataka, pin - 560001"
+  },
+  {
+    "userId": "pharmacist902316743",
+    "name": "VIKRAM SINGH",
+    "email": "vikram.singh@example.com",
+    "role": "pharmacist",
+    "image": "/uploads/vikram_singh.jpg",
+    "medicalHistory": [],
+    "medicines": ["Paracetamol", "Vitamin C", "Multivitamins"],
+    "availability": ["Mon-Fri 9am-5pm", "Sat 10am-2pm"],
+    "location": "Chennai",
+    "pharmacyName": "LifeCare Pharmacy",
+    "licenseNumber": "1789550",
+    "address": "12 T Nagar, Chennai, Tamil Nadu, pin - 600017"
   }
 ]
