@@ -60,12 +60,12 @@
 
 /* Search medicine link styled like button */
 .navbar-links a[href="/search-medicine"] {
-  background-color: #ff9800;
+  background-color: #0077cc;
   color: #fff;
 }
 
 .navbar-links a[href="/search-medicine"]:hover {
-  background-color: #e68900;
+  background-color: #0077cc;
   color: #fff;
 }
 
