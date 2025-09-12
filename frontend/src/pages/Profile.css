@@ -1,0 +1,121 @@
+.profile-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fdfdfd;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.profile-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.profile-container img {
+  display: block;
+  margin: 0 auto 20px;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #4CAF50;
+}
+
+.profile-details p {
+  font-size: 16px;
+  margin: 5px 0;
+  color: #555;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-form input,
+.profile-form textarea {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+}
+
+.profile-form input:focus,
+.profile-form textarea:focus {
+  border-color: #4CAF50;
+}
+
+.profile-form button {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.edit-btn {
+  background-color: #2196F3;
+  color: white;
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.edit-btn:hover {
+  background-color: #1976d2;
+}
+
+.save-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #45a049;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #d32f2f;
+}
+
+.msg {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.msg.success {
+  color: green;
+}
+
+.msg.error {
+  color: red;
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 15px;
+  }
+
+  .profile-container img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .profile-form input,
+  .profile-form textarea,
+  .profile-form button {
+    font-size: 14px;
+  }
+}

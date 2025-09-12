@@ -1,0 +1,216 @@
+/* Page layout */
+.signup-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Container */
+.signup-container {
+  background: #fff;
+  padding: 35px 30px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Title */
+.signup-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* Form inputs */
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.signup-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Role selection */
+.role-selection {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.role-selection label {
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.role-selection input[type="radio"] {
+  margin-right: 8px;
+  accent-color: #007bff; /* Blue color for radio buttons */
+}
+
+/* Submit button */
+.signup-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signup-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Message */
+.signup-msg {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #28a745; /* green for success, could be changed for errors */
+}
+
+/* Role selection */
+.role-selection {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 15px;
+}
+
+.role-selection label {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.role-selection input[type="radio"] {
+  accent-color: #007bff; /* Blue color for the radio button */
+  cursor: pointer;
+}
+
+
+/* Page layout */
+.signup-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+/* Container */
+.signup-container {
+  background: #fff;
+  padding: 35px 30px;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+/* Title */
+.signup-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+/* Form inputs */
+.signup-form input[type="text"],
+.signup-form input[type="email"],
+.signup-form input[type="password"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+.signup-form input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Role selection */
+.role-selection {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.role-selection label {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.role-selection input[type="radio"] {
+  accent-color: #007bff;
+  cursor: pointer;
+}
+
+/* Doctor note */
+.doctor-note {
+  font-size: 14px;
+  color: #ff6600;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+/* Submit button */
+.signup-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signup-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Success / error message */
+.signup-msg {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #28a745; /* green for success, can be changed to red for errors */
+  text-align: center;
+}

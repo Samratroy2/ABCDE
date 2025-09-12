@@ -1,0 +1,93 @@
+[
+  {
+    "userId": "patient849590995",
+    "name": "Samrat Roy",
+    "email": "trysamrat1@gmail.com",
+    "role": "patient",
+    "medicalHistory": [
+      "Cancer"
+    ],
+    "medicines": [],
+    "availability": [],
+    "age": 40,
+    "location": "Kolkata",
+    "contact": "9083640748",
+    "image": "/uploads/1757668392493-smiling-medical-doctor-woman-stethoscope-isolated-over-white-background-35552912.webp"
+  },
+  {
+    "userId": "patient849590996",
+    "name": "Anita Singh",
+    "email": "anita.singh@example.com",
+    "role": "patient",
+    "medicalHistory": [
+      "Diabetes",
+      "Hypertension"
+    ],
+    "medicines": [],
+    "availability": [],
+    "age": 55,
+    "location": "Mumbai",
+    "contact": "9876543210",
+    "image": "/uploads/1757664000000-anita.jpg"
+  },
+  {
+    "userId": "patient849590997",
+    "name": "Rahul Sharma",
+    "email": "rahul.sharma@example.com",
+    "role": "patient",
+    "medicalHistory": [
+      "Asthma"
+    ],
+    "medicines": [],
+    "availability": [],
+    "age": 30,
+    "location": "Delhi",
+    "contact": "9123456789",
+    "image": "/uploads/1757664012345-rahul.jpg"
+  },
+  {
+    "userId": "patient849590998",
+    "name": "Priya Verma",
+    "email": "priya.verma@example.com",
+    "role": "patient",
+    "medicalHistory": [
+      "Migraine"
+    ],
+    "medicines": [],
+    "availability": [],
+    "age": 25,
+    "location": "Bangalore",
+    "contact": "9012345678",
+    "image": "/uploads/1757664023456-priya.jpg"
+  },
+  {
+    "userId": "patient849590999",
+    "name": "Vikram Patel",
+    "email": "vikram.patel@example.com",
+    "role": "patient",
+    "medicalHistory": [
+      "Thyroid"
+    ],
+    "medicines": [],
+    "availability": [],
+    "age": 45,
+    "location": "Ahmedabad",
+    "contact": "9988776655",
+    "image": "/uploads/1757664034567-vikram.jpg"
+  },
+  {
+    "userId": "patient849591000",
+    "name": "Neha Gupta",
+    "email": "neha.gupta@example.com",
+    "role": "patient",
+    "medicalHistory": [
+      "Allergy"
+    ],
+    "medicines": [],
+    "availability": [],
+    "age": 32,
+    "location": "Chennai",
+    "contact": "9871122334",
+    "image": "/uploads/1757664045678-neha.jpg"
+  }
+]

@@ -1,0 +1,30 @@
+/* frontend/src/pages/Doctors.css */
+
+.doctors-page {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.doctors-page h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Grid layout for doctor cards */
+.doctors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+/* Optional: loading/error messages */
+.doctors-page p {
+  text-align: center;
+  font-size: 1rem;
+  color: #555;
+}

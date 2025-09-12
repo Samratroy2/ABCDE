@@ -1,0 +1,40 @@
+.admin-page {
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.admin-table th,
+.admin-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.admin-table th {
+  background-color: #f2f2f2;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.msg {
+  margin-top: 10px;
+  color: green;
+}

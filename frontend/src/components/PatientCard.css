@@ -1,0 +1,80 @@
+/* PatientCard.css */
+
+.patient-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 250px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin: 10px;
+}
+
+.patient-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.patient-card-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  border: 2px solid #28a745; /* green for patient */
+}
+
+.patient-card-info {
+  text-align: center;
+}
+
+.patient-card-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 8px;
+}
+
+.patient-card-age,
+.patient-card-condition,
+.patient-card-history {
+  font-size: 14px;
+  color: #555555;
+  margin-bottom: 5px;
+}
+
+.patient-card-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  background-color: #28a745;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.patient-card-link:hover {
+  background-color: #1e7e34;
+}
+
+@media (max-width: 500px) {
+  .patient-card {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .patient-card-name {
+    font-size: 18px;
+  }
+
+  .patient-card-age,
+  .patient-card-condition,
+  .patient-card-history {
+    font-size: 13px;
+  }
+}
