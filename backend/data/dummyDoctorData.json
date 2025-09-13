@@ -97,23 +97,5 @@
     "specialization": "Neurologist",
     "experience": 10,
     "image": "/uploads/image.png"
-  },
-  {
-    "userId": "doctor981130694",
-    "name": "MUNNA ROY",
-    "email": "trysamrat1@gmail.com",
-    "location": "Kolkata",
-    "contact": "9083640748",
-    "specialization": "General Physician",
-    "experience": 14,
-    "patientsServed": 753,
-    "rating": 9.4,
-    "medicalHistory": [],
-    "medicines": [],
-    "availability": [
-      "Monday",
-      "Wednesday",
-      "Friday"
-    ]
   }
 ]

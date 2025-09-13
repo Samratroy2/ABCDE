@@ -68,7 +68,9 @@ export default function AdminPanel() {
             <tr>
               <th>Name</th>
               <th>Email</th>
+              <th>User ID</th>
               <th>Role</th>
+              <th>Gender</th> {/* ✅ Added gender column */}
               <th>Profile Photo</th>
               <th>Action</th>
             </tr>
@@ -78,7 +80,9 @@ export default function AdminPanel() {
               <tr key={u.userId}>
                 <td>{u.name}</td>
                 <td>{u.email}</td>
+                <td>{u.userId}</td>
                 <td>{u.role}</td>
+                <td>{u.gender || 'N/A'}</td> {/* ✅ Show gender */}
                 <td>
                   {u.image ? (
                     <img

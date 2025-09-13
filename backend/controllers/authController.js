@@ -21,15 +21,19 @@ const generateToken = (user) => {
 // ================== SIGNUP ==================
 const signupUser = async (req, res) => {
   try {
-    const { name, email, password, role } = req.body;
+    const { name, email, password, role, gender } = req.body;
 
-    if (!name || !email || !password) {
-      return res.status(400).json({ success: false, message: "All fields are required" });
+    if (!name || !email || !password || !role || !gender) {
+      return res
+        .status(400)
+        .json({ success: false, message: "All fields (name, email, password, role, gender) are required" });
     }
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res.status(400).json({ success: false, message: "Email already in use" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Email already in use" });
     }
 
     // Auto-generate fixed userId based on role
@@ -46,7 +50,8 @@ const signupUser = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      role: role || "patient",
+      role,
+      gender,
       userId,
     });
 
@@ -63,6 +68,8 @@ const signupUser = async (req, res) => {
         userId,
         name,
         email,
+        gender,
+        role,
         location: "",
         contact: "",
         specialization: "",
@@ -83,6 +90,8 @@ const signupUser = async (req, res) => {
         userId,
         name,
         email,
+        gender,
+        role,
         age: null,
         location: "",
         contact: "",
@@ -99,6 +108,8 @@ const signupUser = async (req, res) => {
         userId,
         name,
         email,
+        gender,
+        role,
         location: "",
         contact: "",
         pharmacyName: "",
@@ -123,13 +134,18 @@ const signupUser = async (req, res) => {
         name: newUser.name,
         email: newUser.email,
         role: newUser.role,
+        gender: newUser.gender,
         userId: newUser.userId,
       },
       token,
     });
   } catch (err) {
     console.error("Signup error:", err.message);
-    res.status(500).json({ success: false, message: "Server error", error: err.message });
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: err.message,
+    });
   }
 };
 
@@ -140,11 +156,15 @@ const loginUser = async (req, res) => {
 
     const user = await User.findOne({ email });
     if (!user)
-      return res.status(400).json({ success: false, message: "Invalid credentials" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid credentials" });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
-      return res.status(400).json({ success: false, message: "Invalid credentials" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid credentials" });
 
     const token = generateToken(user);
 
@@ -156,13 +176,18 @@ const loginUser = async (req, res) => {
         name: user.name,
         email: user.email,
         role: user.role,
+        gender: user.gender,
         userId: user.userId,
       },
       token,
     });
   } catch (err) {
     console.error("Login error:", err.message);
-    res.status(500).json({ success: false, message: "Server error", error: err.message });
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: err.message,
+    });
   }
 };
 
@@ -172,7 +197,9 @@ const forgotPassword = async (req, res) => {
     const { email } = req.body;
     const user = await User.findOne({ email });
     if (!user)
-      return res.status(404).json({ success: false, message: "User not found with this email" });
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found with this email" });
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     otpStore[email] = { otp, expiresAt: Date.now() + 10 * 60 * 1000 }; // 10 min
@@ -197,11 +224,18 @@ const forgotPassword = async (req, res) => {
     } catch (mailError) {
       console.error("Email error:", mailError.message);
       console.log(`OTP for ${email}: ${otp}`);
-      return res.json({ success: true, message: "OTP generated (check console in dev mode)." });
+      return res.json({
+        success: true,
+        message: "OTP generated (check console in dev mode).",
+      });
     }
   } catch (err) {
     console.error("Forgot password error:", err.message);
-    res.status(500).json({ success: false, message: "Server error", error: err.message });
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: err.message,
+    });
   }
 };
 
@@ -212,12 +246,16 @@ const resetPassword = async (req, res) => {
     const entry = otpStore[email];
 
     if (!entry || entry.otp !== otp || entry.expiresAt < Date.now()) {
-      return res.status(400).json({ success: false, message: "Invalid or expired OTP" });
+      return res
+        .status(400)
+        .json({ success: false, message: "Invalid or expired OTP" });
     }
 
     const user = await User.findOne({ email });
     if (!user)
-      return res.status(404).json({ success: false, message: "User not found with this email" });
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found with this email" });
 
     user.password = await bcrypt.hash(newPassword, 10);
     await user.save();
@@ -227,7 +265,11 @@ const resetPassword = async (req, res) => {
     res.json({ success: true, message: "Password reset successful" });
   } catch (err) {
     console.error("Reset password error:", err.message);
-    res.status(500).json({ success: false, message: "Server error", error: err.message });
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: err.message,
+    });
   }
 };
 

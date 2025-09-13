@@ -20,117 +20,13 @@
   text-align: center;
 }
 
-/* Title */
-.signup-title {
-  font-size: 28px;
-  font-weight: bold;
-  color: #333;
-  margin-bottom: 25px;
-}
-
-/* Form inputs */
-.signup-form input[type="text"],
-.signup-form input[type="email"],
-.signup-form input[type="password"] {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 16px;
-  box-sizing: border-box;
-  transition: border-color 0.3s;
-}
-
-.signup-form input:focus {
-  border-color: #007bff;
-  outline: none;
-}
-
-/* Role selection */
-.role-selection {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 20px;
-}
-
-.role-selection label {
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.role-selection input[type="radio"] {
-  margin-right: 8px;
-  accent-color: #007bff; /* Blue color for radio buttons */
-}
-
-/* Submit button */
-.signup-btn {
-  width: 100%;
-  padding: 12px;
-  background-color: #007bff;
-  color: #fff;
-  font-weight: bold;
-  font-size: 16px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.signup-btn:hover {
-  background-color: #0056b3;
-}
-
-/* Message */
-.signup-msg {
-  margin-top: 15px;
-  font-size: 14px;
-  color: #28a745; /* green for success, could be changed for errors */
-}
-
-/* Role selection */
-.role-selection {
-  display: flex;
-  justify-content: space-around;
-  margin-bottom: 15px;
-}
-
-.role-selection label {
-  font-size: 16px;
-  color: #333;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.role-selection input[type="radio"] {
-  accent-color: #007bff; /* Blue color for the radio button */
-  cursor: pointer;
-}
-
-
-/* Page layout */
-.signup-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f0f4f8;
-  font-family: Arial, sans-serif;
-  padding: 20px;
-}
-
-/* Container */
-.signup-container {
-  background: #fff;
-  padding: 35px 30px;
-  border-radius: 12px;
-  max-width: 400px;
-  width: 100%;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  text-align: center;
+/* Logo styling */
+.signup-logo {
+  display: block;
+  margin: 0 auto 1.5rem;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
 }
 
 /* Title */
@@ -164,7 +60,7 @@
 .role-selection {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 
 .role-selection label {
@@ -178,6 +74,27 @@
 
 .role-selection input[type="radio"] {
   accent-color: #007bff;
+  cursor: pointer;
+}
+
+/* Gender selection */
+.gender-selection {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.gender-selection label {
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gender-selection input[type="radio"] {
+  accent-color: #ff4081; /* pinkish accent for gender */
   cursor: pointer;
 }
 
@@ -211,19 +128,11 @@
 .signup-msg {
   margin-top: 15px;
   font-size: 14px;
-  color: #28a745; /* green for success, can be changed to red for errors */
+  color: #28a745; /* green for success, red for error can be swapped dynamically */
   text-align: center;
 }
 
-/* Logo styling */
-.signup-logo {
-  display: block;
-  margin: 0 auto 1.5rem;
-  width: 80px;
-  height: 80px;
-  object-fit: contain;
-}
-
+/* Back to login button */
 .back-login-btn {
   margin-top: 10px;
   background-color: transparent;

@@ -6,13 +6,20 @@ import logo from "../assets/image.png";
 import "./Signup.css";
 
 export default function Signup() {
-  const [form, setForm] = useState({ name: "", email: "", password: "", role: "patient" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    role: "patient",
+    gender: "male", // default gender
+  });
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { signup } = useAuth();
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,6 +78,7 @@ export default function Signup() {
             required
           />
 
+          {/* Role Selection */}
           <div className="role-selection">
             <label>
               <input
@@ -79,7 +87,8 @@ export default function Signup() {
                 value="patient"
                 checked={form.role === "patient"}
                 onChange={handleChange}
-              /> Patient
+              />{" "}
+              Patient
             </label>
             <label>
               <input
@@ -88,7 +97,8 @@ export default function Signup() {
                 value="doctor"
                 checked={form.role === "doctor"}
                 onChange={handleChange}
-              /> Doctor
+              />{" "}
+              Doctor
             </label>
             <label>
               <input
@@ -97,7 +107,42 @@ export default function Signup() {
                 value="pharmacist"
                 checked={form.role === "pharmacist"}
                 onChange={handleChange}
-              /> Pharmacist
+              />{" "}
+              Pharmacist
+            </label>
+          </div>
+
+          {/* Gender Selection */}
+          <div className="gender-selection">
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="male"
+                checked={form.gender === "male"}
+                onChange={handleChange}
+              />{" "}
+              Male
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="female"
+                checked={form.gender === "female"}
+                onChange={handleChange}
+              />{" "}
+              Female
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="gender"
+                value="other"
+                checked={form.gender === "other"}
+                onChange={handleChange}
+              />{" "}
+              Other
             </label>
           </div>
 

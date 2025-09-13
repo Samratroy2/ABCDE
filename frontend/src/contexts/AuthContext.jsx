@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   // ================= SIGNUP =================
-  const signup = async ({ name, email, password, role, userId }) => {
+  const signup = async ({ name, email, password, role, userId, gender }) => {
     try {
       const res = await axios.post("http://localhost:5000/api/auth/signup", {
         name,
@@ -65,6 +65,7 @@ export const AuthProvider = ({ children }) => {
         password,
         role,
         userId,
+        gender, // ✅ added gender to match backend requirement
       });
 
       const { user: userData, token: newToken } = res.data;
