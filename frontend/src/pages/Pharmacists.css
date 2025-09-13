@@ -2,12 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
   padding: 20px;
+  justify-content: center; /* center the cards */
   background-color: #f9f9f9;
-}
-
-p {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
+  min-height: 100vh;
 }

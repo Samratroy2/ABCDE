@@ -79,5 +79,21 @@
     "pharmacyName": "LifeCare Pharmacy",
     "licenseNumber": "1789550",
     "address": "12 T Nagar, Chennai, Tamil Nadu, pin - 600017"
+  },
+  {
+    "userId": "pharmacist_1757756373959_7179",
+    "name": "SAYAN DUTTA",
+    "email": "samratroy721121@gmail.com",
+    "gender": "male",
+    "role": "pharmacist",
+    "location": "",
+    "contact": "",
+    "pharmacyName": "",
+    "licenseNumber": "",
+    "address": "",
+    "medicalHistory": [],
+    "medicines": [],
+    "availability": [],
+    "image": "Pharmacist.jpg"
   }
 ]

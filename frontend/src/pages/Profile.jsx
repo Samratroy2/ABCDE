@@ -55,16 +55,18 @@ export default function Profile() {
 
   if (!profile) return <p>Loading...</p>;
 
+  // Determine image URL from backend
+  const profileImage = profile.image
+    ? profile.image.startsWith('/uploads')
+      ? `http://localhost:5000${profile.image}`
+      : `http://localhost:5000/uploads/${encodeURIComponent(profile.image)}`
+    : '/default-profile.png';
+
   return (
     <div className="profile-container">
       <h1>My Profile</h1>
 
-      {profile.image && (
-        <img
-          src={profile.image.startsWith('/uploads') ? profile.image : `/uploads/${profile.image}`}
-          alt={profile.name}
-        />
-      )}
+      <img src={profileImage} alt={profile.name} className="profile-photo" onError={(e) => e.target.src = '/default-profile.png'} />
 
       {!editMode ? (
         <div className="profile-details">

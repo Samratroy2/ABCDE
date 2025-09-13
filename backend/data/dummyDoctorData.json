@@ -4,6 +4,7 @@
     "name": "Anita Sen",
     "email": "anita.sen@example.com",
     "role": "doctor",
+    "gender": "female",
     "medicalHistory": [],
     "medicines": [],
     "availability": [
@@ -16,13 +17,14 @@
     "contact": "9123456780",
     "specialization": "Pediatrician",
     "experience": 15,
-    "image": "/uploads/image.png"
+    "image": "/uploads/Doctor Female.png"
   },
   {
     "userId": "doctor981130696",
     "name": "Rakesh Kumar",
     "email": "rakesh.kumar@example.com",
     "role": "doctor",
+    "gender": "male",
     "medicalHistory": [],
     "medicines": [],
     "availability": [
@@ -36,13 +38,14 @@
     "contact": "9876543210",
     "specialization": "Cardiologist",
     "experience": 20,
-    "image": "/uploads/image2.png"
+    "image": "/uploads/Doctor Male.png"
   },
   {
     "userId": "doctor981130697",
     "name": "Meera Joshi",
     "email": "meera.joshi@example.com",
     "role": "doctor",
+    "gender": "female",
     "medicalHistory": [],
     "medicines": [],
     "availability": [
@@ -56,13 +59,14 @@
     "contact": "9988776655",
     "specialization": "Dermatologist",
     "experience": 12,
-    "image": "/uploads/image.png"
+    "image": "/uploads/Doctor Female.png"
   },
   {
     "userId": "doctor981130698",
     "name": "Vikram Singh",
     "email": "vikram.singh@example.com",
     "role": "doctor",
+    "gender": "male",
     "medicalHistory": [],
     "medicines": [],
     "availability": [
@@ -76,13 +80,14 @@
     "contact": "9012345678",
     "specialization": "Orthopedic",
     "experience": 18,
-    "image": "/uploads/image2.png"
+    "image": "/uploads/Doctor Male.png"
   },
   {
     "userId": "doctor981130699",
     "name": "Sonal Kapoor",
     "email": "sonal.kapoor@example.com",
     "role": "doctor",
+    "gender": "female",
     "medicalHistory": [],
     "medicines": [],
     "availability": [
@@ -96,6 +101,23 @@
     "contact": "9876123450",
     "specialization": "Neurologist",
     "experience": 10,
-    "image": "/uploads/image.png"
+    "image": "/uploads/Doctor Female.png"
+  },
+  {
+    "userId": "doctor_1757761357627_8993",
+    "name": "MUNNA ROY",
+    "email": "trysamrat1@gmail.com",
+    "gender": "female",
+    "role": "doctor",
+    "location": "",
+    "contact": "",
+    "specialization": "",
+    "experience": 0,
+    "patientsServed": 0,
+    "rating": 0,
+    "medicalHistory": [],
+    "medicines": [],
+    "availability": [],
+    "image": "/uploads/Doctor Female.png"
   }
 ]

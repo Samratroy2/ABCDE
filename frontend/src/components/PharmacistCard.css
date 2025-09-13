@@ -49,3 +49,57 @@
 .view-profile-link:hover {
   background-color: #0056b3;
 }
+
+.pharmacist-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  width: 250px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pharmacist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.pharmacist-card-image {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.pharmacist-card-info h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+  color: #333;
+}
+
+.pharmacist-card-info p {
+  margin: 3px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.view-profile-link {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.view-profile-link:hover {
+  background-color: #0056b3;
+}

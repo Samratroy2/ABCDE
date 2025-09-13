@@ -1,3 +1,4 @@
+// frontend/src/pages/PatientsDetails.jsx
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
@@ -35,9 +36,17 @@ export default function PatientsDetails() {
   if (error) return <p style={{ color: 'red' }}>{error}</p>;
   if (!patient) return <p>Patient not found.</p>;
 
-  const photoUrl = patient.image
-    ? `http://localhost:5000${patient.image}`
-    : '/default-patient.png';
+  // Only show image if present in backend data
+  let photoUrl = null;
+  if (patient.image) {
+    if (patient.image.startsWith('http')) {
+      photoUrl = patient.image;
+    } else if (patient.image.startsWith('/')) {
+      photoUrl = `http://localhost:5000${encodeURI(patient.image)}`;
+    } else {
+      photoUrl = `http://localhost:5000/uploads/${encodeURI(patient.image)}`;
+    }
+  }
 
   return (
     <div className="patient-details-page">
@@ -49,13 +58,16 @@ export default function PatientsDetails() {
         <p><strong>Role:</strong> {patient.role}</p>
         <p><strong>Contact:</strong> {patient.contact || 'N/A'}</p>
         <p><strong>Location:</strong> {patient.location || 'N/A'}</p>
-        <p><strong>Profile Photo:</strong></p>
-        <img
-          src={photoUrl}
-          alt={patient.name}
-          className="patient-photo"
-          onError={(e) => (e.target.src = '/default-patient.png')}
-        />
+        {photoUrl && (
+          <>
+            <p><strong>Profile Photo:</strong></p>
+            <img
+              src={photoUrl}
+              alt={patient.name}
+              className="patient-photo"
+            />
+          </>
+        )}
         {patient.medicalHistory?.length > 0 && (
           <div>
             <strong>Medical History:</strong>

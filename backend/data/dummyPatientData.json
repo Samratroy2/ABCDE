@@ -58,5 +58,19 @@
     "location": "Chennai",
     "contact": "9871122334",
     "image": "/uploads/image1.png"
+  },
+  {
+    "userId": "patient_1757756332676_7282",
+    "name": "Samrat Roy",
+    "email": "roys18746@gmail.com",
+    "gender": "male",
+    "role": "patient",
+    "age": null,
+    "location": "",
+    "contact": "",
+    "medicalHistory": [],
+    "medicines": [],
+    "availability": [],
+    "image": "Patient.png"
   }
 ]

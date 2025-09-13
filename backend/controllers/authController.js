@@ -24,26 +24,34 @@ const signupUser = async (req, res) => {
     const { name, email, password, role, gender } = req.body;
 
     if (!name || !email || !password || !role || !gender) {
-      return res
-        .status(400)
-        .json({ success: false, message: "All fields (name, email, password, role, gender) are required" });
+      return res.status(400).json({
+        success: false,
+        message: "All fields (name, email, password, role, gender) are required",
+      });
     }
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Email already in use" });
+      return res.status(400).json({ success: false, message: "Email already in use" });
     }
 
-    // Auto-generate fixed userId based on role
-    let userId = "";
-    if (role === "doctor") userId = "doctor981130694";
-    else if (role === "patient") userId = "patient849590996";
-    else if (role === "pharmacist") userId = "pharmacist902316739";
-    else userId = role + Date.now() + Math.floor(Math.random() * 1000); // fallback
+    // Generate unique userId
+    const userId = `${role}_${Date.now()}_${Math.floor(Math.random() * 10000)}`;
 
     const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Set default image based on role and gender
+    let defaultImage = "";
+    if (role === "doctor") {
+      defaultImage =
+        gender.toLowerCase() === "female"
+          ? "/uploads/Doctor Female.png"
+          : "/uploads/Doctor Male.png";
+    } else if (role === "patient") {
+      defaultImage = "Patient.png";
+    } else if (role === "pharmacist") {
+      defaultImage = "Pharmacist.jpg";
+    }
 
     // Create MongoDB User
     const newUser = new User({
@@ -53,6 +61,7 @@ const signupUser = async (req, res) => {
       role,
       gender,
       userId,
+      image: defaultImage,
     });
 
     await newUser.save();
@@ -79,7 +88,7 @@ const signupUser = async (req, res) => {
         medicalHistory: [],
         medicines: [],
         availability: [],
-        image: "",
+        image: defaultImage,
       };
       doctors.push(newEntry);
       fs.writeFileSync(filePath, JSON.stringify(doctors, null, 2));
@@ -98,6 +107,7 @@ const signupUser = async (req, res) => {
         medicalHistory: [],
         medicines: [],
         availability: [],
+        image: defaultImage,
       };
       patients.push(newEntry);
       fs.writeFileSync(filePath, JSON.stringify(patients, null, 2));
@@ -118,6 +128,7 @@ const signupUser = async (req, res) => {
         medicalHistory: [],
         medicines: [],
         availability: [],
+        image: defaultImage,
       };
       pharmacists.push(newEntry);
       fs.writeFileSync(filePath, JSON.stringify(pharmacists, null, 2));
@@ -136,6 +147,7 @@ const signupUser = async (req, res) => {
         role: newUser.role,
         gender: newUser.gender,
         userId: newUser.userId,
+        image: newUser.image,
       },
       token,
     });
@@ -156,15 +168,11 @@ const loginUser = async (req, res) => {
 
     const user = await User.findOne({ email });
     if (!user)
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid credentials" });
+      return res.status(400).json({ success: false, message: "Invalid credentials" });
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch)
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid credentials" });
+      return res.status(400).json({ success: false, message: "Invalid credentials" });
 
     const token = generateToken(user);
 
@@ -178,6 +186,7 @@ const loginUser = async (req, res) => {
         role: user.role,
         gender: user.gender,
         userId: user.userId,
+        image: user.image,
       },
       token,
     });
@@ -197,9 +206,7 @@ const forgotPassword = async (req, res) => {
     const { email } = req.body;
     const user = await User.findOne({ email });
     if (!user)
-      return res
-        .status(404)
-        .json({ success: false, message: "User not found with this email" });
+      return res.status(404).json({ success: false, message: "User not found with this email" });
 
     const otp = Math.floor(100000 + Math.random() * 900000).toString();
     otpStore[email] = { otp, expiresAt: Date.now() + 10 * 60 * 1000 }; // 10 min
@@ -246,16 +253,12 @@ const resetPassword = async (req, res) => {
     const entry = otpStore[email];
 
     if (!entry || entry.otp !== otp || entry.expiresAt < Date.now()) {
-      return res
-        .status(400)
-        .json({ success: false, message: "Invalid or expired OTP" });
+      return res.status(400).json({ success: false, message: "Invalid or expired OTP" });
     }
 
     const user = await User.findOne({ email });
     if (!user)
-      return res
-        .status(404)
-        .json({ success: false, message: "User not found with this email" });
+      return res.status(404).json({ success: false, message: "User not found with this email" });
 
     user.password = await bcrypt.hash(newPassword, 10);
     await user.save();
@@ -265,11 +268,7 @@ const resetPassword = async (req, res) => {
     res.json({ success: true, message: "Password reset successful" });
   } catch (err) {
     console.error("Reset password error:", err.message);
-    res.status(500).json({
-      success: false,
-      message: "Server error",
-      error: err.message,
-    });
+    res.status(500).json({ success: false, message: "Server error", error: err.message });
   }
 };
 
