@@ -1,0 +1,28 @@
+[
+  {
+    "id": "1757783680901",
+    "patientId": "patient_1757780673792_979",
+    "patientName": "Samrat Roy",
+    "patientEmail": "roys18746@gmail.com",
+    "doctorId": "doctor_1757782932241_5362",
+    "doctorName": "MUNNA ROY",
+    "doctorEmail": "trysamrat1@gmail.com",
+    "date": "2025-09-14",
+    "time": "16:30",
+    "status": "approved",
+    "meetLink": "https://meet.google.com/ugt-kxcj-hoq"
+  },
+  {
+    "id": "1757783976233",
+    "patientId": "patient_1757780673792_979",
+    "patientName": "Samrat Roy",
+    "patientEmail": "roys18746@gmail.com",
+    "doctorId": "doctor_1757783933840_4113",
+    "doctorName": "SAYAN DUTTA",
+    "doctorEmail": "samratroy721121@gmail.com",
+    "date": "2025-09-13",
+    "time": "22:50",
+    "status": "rejected",
+    "meetLink": ""
+  }
+]

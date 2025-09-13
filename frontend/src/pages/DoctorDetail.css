@@ -72,3 +72,17 @@
     font-size: 0.9rem;
   }
 }
+
+.book-appointment-btn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.book-appointment-btn:hover {
+  background-color: #115293;
+}

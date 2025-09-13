@@ -1,0 +1,70 @@
+.book-appointment-container {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #f9f9fc;
+  border-radius: 10px;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+.doctor-info-card {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-left: 4px solid #007bff;
+  background: #fff;
+  border-radius: 6px;
+}
+
+.doctor-info-card h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.appointment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.appointment-form label {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  color: #444;
+}
+
+.appointment-form input {
+  margin-top: 5px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.appointment-form button {
+  margin-top: 10px;
+  padding: 10px;
+  background: #007bff;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.appointment-form button:hover {
+  background: #0056b3;
+}
+
+.message-text {
+  margin-top: 15px;
+  font-weight: bold;
+  color: red;
+}
+
+.loading-text {
+  text-align: center;
+  margin-top: 40px;
+  color: #555;
+}

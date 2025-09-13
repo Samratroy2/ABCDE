@@ -1,10 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useAuth } from '../contexts/AuthContext';
 import './DoctorDetail.css';
 
 export default function DoctorDetail() {
-  const { id } = useParams();
+  const { id } = useParams(); // doctor userId from route
+  const { user } = useAuth(); // current logged-in user
+  const navigate = useNavigate();
+
   const [doctor, setDoctor] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -38,6 +42,15 @@ export default function DoctorDetail() {
     fetchDoctor();
   }, [id]);
 
+  const handleBookAppointment = () => {
+    // Navigate to the booking page with correct doctorId
+    if (doctor?.userId) {
+      navigate(`/book-appointment/${doctor.userId}`);
+    } else {
+      alert("Doctor info not available");
+    }
+  };
+
   if (loading) return <p>Loading doctor details...</p>;
   if (error) return <p style={{ color: 'red' }}>{error}</p>;
   if (!doctor) return <p>Doctor not found.</p>;
@@ -58,6 +71,13 @@ export default function DoctorDetail() {
         <p><strong>Patients Served:</strong> {doctor.patientsServed || 0}</p>
         <p><strong>Rating:</strong> {doctor.rating || 'N/A'}</p>
         <p><strong>Availability:</strong> {doctor.availability?.join(', ') || 'N/A'}</p>
+
+        {/* Book Appointment Button */}
+        {user?.role === 'patient' && user.userId !== doctor.userId && (
+          <button onClick={handleBookAppointment} className="book-appointment-btn">
+            Book Appointment
+          </button>
+        )}
       </div>
     </div>
   );

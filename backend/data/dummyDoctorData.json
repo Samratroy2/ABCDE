@@ -104,7 +104,7 @@
     "image": "/uploads/Doctor Female.png"
   },
   {
-    "userId": "doctor_1757761357627_8993",
+    "userId": "doctor_1757782932241_5362",
     "name": "MUNNA ROY",
     "email": "trysamrat1@gmail.com",
     "gender": "female",
@@ -119,5 +119,22 @@
     "medicines": [],
     "availability": [],
     "image": "/uploads/Doctor Female.png"
+  },
+  {
+    "userId": "doctor_1757783933840_4113",
+    "name": "SAYAN DUTTA",
+    "email": "samratroy721121@gmail.com",
+    "gender": "male",
+    "role": "doctor",
+    "location": "",
+    "contact": "",
+    "specialization": "",
+    "experience": 0,
+    "patientsServed": 0,
+    "rating": 0,
+    "medicalHistory": [],
+    "medicines": [],
+    "availability": [],
+    "image": "/uploads/Doctor Male.png"
   }
 ]

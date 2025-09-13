@@ -9,6 +9,9 @@ import PrivateRoute from "./components/PrivateRoute";
 // Pages
 import Doctors from "./pages/Doctors";
 import DoctorDetail from "./pages/DoctorDetail";
+import BookAppointment from "./pages/BookAppointment";
+import DoctorAppointments from "./pages/DoctorAppointments";
+import MyAppointments from "./pages/MyAppointments";
 import Patients from "./pages/Patients";
 import PatientDetails from "./pages/PatientDetails";
 import Pharmacists from "./pages/Pharmacists";
@@ -26,13 +29,13 @@ export default function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        {/* Public routes */}
+        {/* Public Routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password" element={<ResetPassword />} />
 
-        {/* Protected routes */}
+        {/* Protected Routes */}
         <Route
           path="/"
           element={
@@ -54,6 +57,30 @@ export default function App() {
           element={
             <PrivateRoute>
               <DoctorDetail />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/book-appointment/:doctorId"
+          element={
+            <PrivateRoute>
+              <BookAppointment />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/doctor/appointments"
+          element={
+            <PrivateRoute>
+              <DoctorAppointments />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/my-appointments"
+          element={
+            <PrivateRoute>
+              <MyAppointments />
             </PrivateRoute>
           }
         />
