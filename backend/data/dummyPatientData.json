@@ -12,7 +12,7 @@
     "age": 30,
     "location": "Delhi",
     "contact": "9123456789",
-    "image": "/uploads/image1.png"
+    "image": "Patient.png"
   },
   {
     "userId": "patient849590998",
@@ -27,7 +27,7 @@
     "age": 25,
     "location": "Bangalore",
     "contact": "9012345678",
-    "image": "/uploads/image1.png"
+    "image": "Patient.png"
   },
   {
     "userId": "patient849590999",
@@ -42,7 +42,7 @@
     "age": 45,
     "location": "Ahmedabad",
     "contact": "9988776655",
-    "image": "/uploads/image1.png"
+    "image": "Patient.png"
   },
   {
     "userId": "patient849591000",
@@ -57,7 +57,7 @@
     "age": 32,
     "location": "Chennai",
     "contact": "9871122334",
-    "image": "/uploads/image1.png"
+    "image": "Patient.png"
   },
   {
     "userId": "patient_1757756332676_7282",
