@@ -4,7 +4,7 @@
     "name": "PRIYA SEN",
     "email": "priya.sen@example.com",
     "role": "pharmacist",
-    "image": "/uploads/image 4.jpg",
+    "image": "Pharmacist.jpg",
     "medicalHistory": [],
     "medicines": [
       "Ibuprofen",
@@ -24,7 +24,7 @@
     "name": "RAHUL KUMAR",
     "email": "rahul.kumar@example.com",
     "role": "pharmacist",
-    "image": "/uploads/image 4.jpg",
+    "image": "Pharmacist.jpg",
     "medicalHistory": [],
     "medicines": [
       "Paracetamol",
@@ -44,7 +44,7 @@
     "name": "ANITA SHARMA",
     "email": "anita.sharma@example.com",
     "role": "pharmacist",
-    "image": "/uploads/image 4.jpg",
+    "image": "Pharmacist.jpg",
     "medicalHistory": [],
     "medicines": [
       "Vitamin B12",
@@ -64,7 +64,7 @@
     "name": "VIKRAM SINGH",
     "email": "vikram.singh@example.com",
     "role": "pharmacist",
-    "image": "/uploads/image 4.jpg",
+    "image": "Pharmacist.jpg",
     "medicalHistory": [],
     "medicines": [
       "Paracetamol",

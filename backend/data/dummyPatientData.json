@@ -65,12 +65,16 @@
     "email": "roys18746@gmail.com",
     "gender": "male",
     "role": "patient",
-    "age": null,
-    "location": "",
-    "contact": "",
-    "medicalHistory": [],
+    "age": 40,
+    "location": "Kolkata",
+    "contact": "9083640748",
+    "medicalHistory": [
+      "vrbhw",
+      "bvjhbw",
+      "vjhbwj"
+    ],
     "medicines": [],
     "availability": [],
-    "image": "Patient.png"
+    "image": "/uploads/1757785012985-Samrat production.png"
   }
 ]
