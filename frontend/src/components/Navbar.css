@@ -54,7 +54,7 @@
 }
 
 .logout-btn:hover {
-  background-color: #c0392b;
+  background-color: #ff1900;
   color: #fff;
 }
 
@@ -65,19 +65,20 @@
 }
 
 .navbar-links a[href="/search-medicine"]:hover {
-  background-color: #0077cc;
+  background-color: #005fa3; /* change hover color as desired */
   color: #fff;
 }
+
 
 /* Responsive: stack links on small screens */
 @media (max-width: 768px) {
   .navbar {
     flex-direction: column;
-    align-items: flex-start;
+    align-items:center;
   }
 
   .navbar-links {
-    width: 100%;
+    width: 90%;
     flex-direction: column;
     gap: 10px;
     margin-top: 10px;
@@ -105,4 +106,10 @@
     padding: 6px 12px;
     font-size: 0.95rem;
   }
+}
+
+/* Logout hover */
+.navbar-links .logout-btn:hover {
+  background-color: #ff1900 !important; /* brighter red */
+  color: #fff;
 }
