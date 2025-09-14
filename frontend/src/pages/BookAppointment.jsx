@@ -1,4 +1,3 @@
-// frontend/src/pages/BookAppointment.jsx
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -6,14 +5,14 @@ import { useAuth } from "../contexts/AuthContext";
 import "./BookAppointment.css";
 
 const BookAppointment = () => {
-  const { user } = useAuth(); // logged-in patient
-  const { doctorId } = useParams(); // doctor profile ID from URL
+  const { user } = useAuth();
+  const { doctorId } = useParams();
   const [doctor, setDoctor] = useState(null);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
+  const [prescription, setPrescription] = useState(null);
   const [message, setMessage] = useState("");
 
-  // Fetch doctor data
   useEffect(() => {
     const fetchDoctor = async () => {
       try {
@@ -27,7 +26,8 @@ const BookAppointment = () => {
     fetchDoctor();
   }, [doctorId]);
 
-  // Handle booking
+  const handleFileChange = (e) => setPrescription(e.target.files[0]);
+
   const handleBook = async () => {
     if (!doctor) return;
     if (doctor.userId === user.userId) {
@@ -39,20 +39,28 @@ const BookAppointment = () => {
       return;
     }
 
-    const payload = {
-      patientId: user.userId,
-      patientName: user.name,
-      patientEmail: user.email,
-      doctorId: doctor.userId,
-      doctorName: doctor.name,
-      doctorEmail: doctor.email,
-      date,
-      time,
-    };
-
     try {
-      const res = await axios.post("http://localhost:5000/api/appointments", payload);
+      const formData = new FormData();
+      formData.append("patientId", user.userId);
+      formData.append("patientName", user.name);
+      formData.append("patientEmail", user.email);
+      formData.append("doctorId", doctor.userId);
+      formData.append("doctorName", doctor.name);
+      formData.append("doctorEmail", doctor.email);
+      formData.append("date", date);
+      formData.append("time", time);
+      if (prescription) formData.append("prescriptionFile", prescription);
+
+      const res = await axios.post(
+        "http://localhost:5000/api/appointments",
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+
       setMessage(res.data.message || "Appointment request sent successfully!");
+      setPrescription(null);
+      setDate("");
+      setTime("");
     } catch (err) {
       console.error("Booking error:", err);
       setMessage("Failed to send appointment request.");
@@ -72,20 +80,17 @@ const BookAppointment = () => {
       <div className="appointment-form">
         <label>
           Date:
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-          />
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
         </label>
 
         <label>
           Time:
-          <input
-            type="time"
-            value={time}
-            onChange={(e) => setTime(e.target.value)}
-          />
+          <input type="time" value={time} onChange={(e) => setTime(e.target.value)} />
+        </label>
+
+        <label>
+          Upload Prescription (optional):
+          <input type="file" accept=".pdf,.jpg,.png" onChange={handleFileChange} />
         </label>
 
         <button onClick={handleBook}>Book Appointment</button>

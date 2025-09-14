@@ -4,7 +4,7 @@ import { useAuth } from "../contexts/AuthContext";
 import "./DoctorAppointments.css";
 
 const DoctorAppointments = () => {
-  const { user } = useAuth(); // logged-in doctor
+  const { user } = useAuth();
   const [appointments, setAppointments] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -12,20 +12,18 @@ const DoctorAppointments = () => {
   useEffect(() => {
     const fetchAppointments = async () => {
       if (!user?.userId) return;
-
       try {
         const res = await axios.get(
           `http://localhost:5000/api/appointments/doctor/${user.userId}`
         );
         setAppointments(res.data || []);
       } catch (err) {
-        console.error("Error fetching appointments:", err);
+        console.error(err);
         setError("Failed to fetch appointments.");
       } finally {
         setLoading(false);
       }
     };
-
     fetchAppointments();
   }, [user?.userId]);
 
@@ -35,15 +33,39 @@ const DoctorAppointments = () => {
         `http://localhost:5000/api/appointments/${appointmentId}`,
         { status: action, meetLink }
       );
-
       setAppointments((prev) =>
         prev.map((a) =>
           a.id === appointmentId ? { ...a, status: action, meetLink: res.data.meetLink } : a
         )
       );
     } catch (err) {
-      console.error("Error updating appointment:", err);
+      console.error(err);
       alert("Failed to update appointment");
+    }
+  };
+
+  const handlePrescriptionUpload = async (appointmentId, file) => {
+    if (!file) return;
+    const formData = new FormData();
+    formData.append("prescription", file);
+
+    try {
+      const res = await axios.post(
+        `http://localhost:5000/api/appointments/${appointmentId}/prescription`,
+        formData,
+        { headers: { "Content-Type": "multipart/form-data" } }
+      );
+      setAppointments((prev) =>
+        prev.map((a) =>
+          a.id === appointmentId
+            ? { ...a, prescription: res.data.appointment.prescription }
+            : a
+        )
+      );
+      alert("Prescription uploaded successfully!");
+    } catch (err) {
+      console.error(err);
+      alert("Failed to upload prescription");
     }
   };
 
@@ -57,16 +79,23 @@ const DoctorAppointments = () => {
 
       {appointments.map((app) => (
         <div key={app.id} className="appointment-card">
-          <p>
-            <strong>Patient:</strong> {app.patientName} ({app.patientEmail})
-          </p>
-          <p>
-            <strong>Date:</strong> {app.date} <strong>Time:</strong> {app.time}
-          </p>
+          <p><strong>Patient:</strong> {app.patientName} ({app.patientEmail})</p>
+          <p><strong>Date:</strong> {app.date} <strong>Time:</strong> {app.time}</p>
           <p className={`appointment-status appointment-status-${app.status}`}>
             <strong>Status:</strong> {app.status}
           </p>
 
+          {/* Patient-uploaded prescription */}
+          {app.prescription && (
+            <p>
+              <strong>Prescription:</strong>{" "}
+              <a href={`http://localhost:5000${app.prescription}`} target="_blank" rel="noreferrer">
+                View Prescription
+              </a>
+            </p>
+          )}
+
+          {/* Pending → Approve/Reject */}
           {app.status === "pending" && (
             <div className="action-box">
               <input
@@ -82,36 +111,27 @@ const DoctorAppointments = () => {
                 }
                 className="meeting-input"
               />
-              <button
-                className="btn-approve"
-                onClick={() => handleAction(app.id, "approved", app.meetLink)}
-              >
+              <button className="btn-approve" onClick={() => handleAction(app.id, "approved", app.meetLink)}>
                 Approve
               </button>
-              <button
-                className="btn-reject"
-                onClick={() => handleAction(app.id, "rejected")}
-              >
+              <button className="btn-reject" onClick={() => handleAction(app.id, "rejected")}>
                 Reject
               </button>
             </div>
           )}
 
+          {/* Approved → doctor can replace prescription */}
           {app.status === "approved" && (
-            <p>
-              <strong>Meeting Link:</strong>{" "}
-              {app.meetLink ? (
-                <a href={app.meetLink} target="_blank" rel="noreferrer" className="meeting-link">
-                  {app.meetLink}
-                </a>
-              ) : (
-                "Not provided"
-              )}
-            </p>
-          )}
-
-          {app.status === "rejected" && (
-            <p className="appointment-status-rejected">Appointment Rejected</p>
+            <div className="prescription-box">
+              <label>
+                <strong>Upload/Replace Prescription (Doctor):</strong>
+              </label>
+              <input
+                type="file"
+                accept=".pdf,.jpg,.jpeg,.png"
+                onChange={(e) => handlePrescriptionUpload(app.id, e.target.files[0])}
+              />
+            </div>
           )}
         </div>
       ))}

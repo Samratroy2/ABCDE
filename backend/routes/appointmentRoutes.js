@@ -1,14 +1,15 @@
+// backend/routes/appointmentRoutes.js
+
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
 const path = require("path");
+const multer = require("multer");
 
 // Path to appointments.json
 const appointmentsPath = path.join(__dirname, "../data/appointments.json");
 
 // ------------------ Helper functions ------------------
-
-// Read appointments from file
 const readAppointments = () => {
   if (fs.existsSync(appointmentsPath)) {
     const data = fs.readFileSync(appointmentsPath, "utf-8");
@@ -22,13 +23,25 @@ const readAppointments = () => {
   return [];
 };
 
-// Write appointments to file
 const writeAppointments = (appointments) => {
   fs.writeFileSync(appointmentsPath, JSON.stringify(appointments, null, 2));
 };
 
-// Normalize IDs (trim, lowercase)
 const normalizeId = (id) => id?.toString().trim().toLowerCase();
+
+// ------------------ Multer setup ------------------
+const prescriptionsDir = path.join(__dirname, "../uploads/prescriptions");
+if (!fs.existsSync(prescriptionsDir)) {
+  fs.mkdirSync(prescriptionsDir, { recursive: true });
+}
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, prescriptionsDir),
+  filename: (req, file, cb) =>
+    cb(null, `${Date.now()}_${file.originalname.replace(/\s+/g, "_")}`),
+});
+
+const upload = multer({ storage });
 
 // ------------------ Routes ------------------
 
@@ -56,21 +69,24 @@ router.get("/patient/:patientId", (req, res) => {
   res.json(patientAppointments);
 });
 
-// POST: create new appointment
-router.post("/", (req, res) => {
+// POST: create new appointment (supports optional prescription file)
+router.post("/", upload.single("prescriptionFile"), (req, res) => {
   const appointments = readAppointments();
 
   const newAppointment = {
-    id: Date.now().toString(), // unique ID
+    id: Date.now().toString(),
     ...req.body,
     status: "pending",
     meetLink: "",
+    prescription: req.file
+      ? `/uploads/prescriptions/${req.file.filename}`
+      : "", // store uploaded file path
   };
 
   appointments.push(newAppointment);
   writeAppointments(appointments);
 
-  res.status(201).json(newAppointment);
+  res.status(201).json({ message: "Appointment created", appointment: newAppointment });
 });
 
 // PUT: approve/reject appointment + update meetLink
@@ -84,7 +100,6 @@ router.put("/:id", (req, res) => {
     return res.status(404).json({ message: "Appointment not found" });
   }
 
-  // Update only allowed fields: status and meetLink
   const updatedFields = {};
   if (req.body.status) updatedFields.status = req.body.status;
   if (req.body.meetLink !== undefined) updatedFields.meetLink = req.body.meetLink;
@@ -93,6 +108,32 @@ router.put("/:id", (req, res) => {
   writeAppointments(appointments);
 
   res.json(appointments[idx]);
+});
+
+// POST: doctor uploads prescription later
+router.post("/:id/prescription", upload.single("prescription"), (req, res) => {
+  const appointments = readAppointments();
+
+  const idx = appointments.findIndex(
+    (a) => normalizeId(a.id) === normalizeId(req.params.id)
+  );
+  if (idx === -1) {
+    return res.status(404).json({ message: "Appointment not found" });
+  }
+
+  if (!req.file) {
+    return res.status(400).json({ message: "No prescription file uploaded" });
+  }
+
+  const prescriptionPath = `/uploads/prescriptions/${req.file.filename}`;
+
+  appointments[idx].prescription = prescriptionPath;
+  writeAppointments(appointments);
+
+  res.json({
+    message: "Prescription uploaded successfully",
+    appointment: appointments[idx],
+  });
 });
 
 module.exports = router;

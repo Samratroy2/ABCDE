@@ -11,6 +11,7 @@ const appointmentSchema = new mongoose.Schema({
   time: { type: String, required: true },
   status: { type: String, default: "pending" }, // pending / approved / rejected
   meetLink: String, // optional for online meeting link
+  prescription: { type: String, default: null },
 }, { timestamps: true });
 
 module.exports = mongoose.model("Appointment", appointmentSchema);
